@@ -1,3 +1,4 @@
+
 import RegisterPage from "./Register/Register";
 
 const LoginRegisterpage = () => {
