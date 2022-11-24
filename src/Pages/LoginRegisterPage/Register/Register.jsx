@@ -1,3 +1,4 @@
+
 import {useForm} from "react-hook-form";
 
 const RegisterPage = () => {
@@ -28,3 +29,4 @@ const RegisterPage = () => {
 }
 
 export default RegisterPage;
+
