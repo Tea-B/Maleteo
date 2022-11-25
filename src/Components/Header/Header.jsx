@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.scss';
-import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter } from 'react-router-dom';
 
 
 export const Header = () => {
