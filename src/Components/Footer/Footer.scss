@@ -1,0 +1,14 @@
+footer{
+    width: 99%;
+    height: 50px;
+    display: flex;
+    position: fixed;
+    bottom: 133px;
+    justify-content: space-around;
+    border: 2px solid grey;
+    border-top: 1px solid grey;
+
+    .b-icon__son{
+        margin-top: 5px;
+    }
+}

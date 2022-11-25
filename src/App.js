@@ -1,3 +1,4 @@
+
 import './App.css';
 import { Route, Routes, BrowserRouter as Router, NavLink } from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
@@ -6,8 +7,12 @@ import LoginRegisterPage from './Pages/LoginRegisterPage/LoginRegisterPage';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import ChatPage from './Pages/ChatPage/ChatPage';
+import { Footer } from './Components/Footer/Footer'
+import { HomeForm } from './Components/HomeForm/HomeForm'
+import { Start1 } from './Components/Start1/Start1';
 
-function App() {
+
+export const App = () => {
   return (
     <Router>
       <Routes>
@@ -19,7 +24,7 @@ function App() {
           <Route path="/chat" element={<ChatPage></ChatPage>} />
       </Routes>
     </Router>
+    <div>
+    <Start1/>
+    </div>
   );
-}
-
-export default App;
