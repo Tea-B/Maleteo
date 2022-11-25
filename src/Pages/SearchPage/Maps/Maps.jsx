@@ -25,7 +25,7 @@ const Maps = () => {
         };
     
         getData();
-    
+
     }, []);
 
     let guardiansMap = (guardians) => {
@@ -34,7 +34,8 @@ const Maps = () => {
     
         guardians.forEach((guardian) => {
             let { "_id": guardianID, "ubicationsID": ubications } = guardian;
-
+            console.log(guardianID);
+            console.log(ubications);
             ubications.forEach((ubication) => {
                 let { _id, name, images, description, disponibility, latitude, longitude } = ubication;
                 mappedUbications.push({guardianID, _id, name, images, description, disponibility, latitude, longitude});
@@ -87,7 +88,7 @@ const Maps = () => {
                     {
                         ubications.map((ubication) => {
                             return (
-                                <Marker position={[ubication.latitude, ubication.longitude]} icon={blueIcon}>
+                                <Marker position={[ubication.latitude, ubication.longitude]} icon={redIcon}>
                                     <Popup>
                                         {ubication.name}
                                     </Popup>
