@@ -4,13 +4,26 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../Context/MyContext';
 import "./Login.scss";
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from "react-facebook-login";
+import GoogleLogin from 'react-google-login';
 
 const LoginPage = () => {
   
   const {register, handleSubmit} = useForm();
   const {login, setLogin} = useContext(MyContext);
   const navigate = useNavigate();
+
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
+
+  const componentClicked = () => {
+    console.log("CLICK");
+  }
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
 
     const onSubmit = (data) => {
       console.log(data)
@@ -31,8 +44,29 @@ const LoginPage = () => {
             <h2>Iniciar sesión ahora</h2>
             </div>
             <div className='linkbtn'>
-              <a href="https://es-es.facebook.com/"> <button className='btnfg btnfg--fg'></button></a>
-              <a href="https://www.google.es/"><button className='btnfg btnfg--go'></button></a>
+              <div>
+                <FacebookLogin 
+                    appId="1088597931155576"
+                    autoLoad={false}
+                    fields="name,email,picture"
+                    onClick={componentClicked}
+                    callback={responseFacebook}
+                    textButton = "Facebook"
+                    icon="fa-facebook"
+                  />
+                </div>
+                <div className='googlebtn'>
+                  <GoogleLogin
+                    clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                    //buttonText="Google"
+                    render={renderProps => (
+                    <button className='googlebtn' onClick={renderProps.onClick} disabled={renderProps.disabled}></button>
+                    )}
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                  />
+                </div>
             </div>
           <p className='sectext'>o utiliza tu correo electrónico</p>
         </div>

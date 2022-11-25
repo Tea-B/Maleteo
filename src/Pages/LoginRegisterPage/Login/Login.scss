@@ -1,8 +1,8 @@
 .centerlogin{
-    width: 300px;
+    width: 330px;
     position: relative;
-    top: 100px;
-    left: 50px;
+    top: 65px;
+    left: 45px;
 }
 
 .formlogin {
@@ -25,18 +25,32 @@
 
 .loginbtn {
     position: relative;
-    top: 60px;
+    top: 45px;
+    background-color: #fbfbfb;
+    border: transparent;
+    outline: none;
+    border-radius: 5px;
+    margin-left: 20px;
+    width: 75%;
+    height: 45px;
+    font-weight: 600;
+    background-color: #f68f24;
+    color: #fff
 }
 
 .textdiv{
     position:relative;
-    top: 25px;
+    top: 15px;
     left: 50px;
 }
 
 .linkbtn {
     position: relative;
     top: 10px;
+    right: 50px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .divtitle {
@@ -50,16 +64,17 @@
     margin: 5px;
 }
 
-.btnfg--fg {
-    background-image: url("../../../../public/Assets/Images/Captura\ facebook.jpg");
-    background-size: cover;
-}
-
-.btnfg--go {
-    background-image: url("../../../../public/Assets/Images/Captura\ de\ pantalla\ 2022-11-25\ 123848.jpg");
-    background-size: cover;
-}
-
 .sectext {
     color: #6A6A6A;
+    margin-top: 30px;
+}
+
+.googlebtn {
+    position: relative;
+    right: 10px;
+    width: 150px;
+    height: 48px;
+    background-image: url("../../../../public/Assets/Images/Captura\ de\ pantalla\ 2022-11-25\ 123848.jpg");
+    background-size: cover;
+    border-radius: 5%;
 }
