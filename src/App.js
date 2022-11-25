@@ -8,6 +8,8 @@ import SearchPage from './Pages/SearchPage/SearchPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import ChatPage from './Pages/ChatPage/ChatPage';
 import { Footer } from './Components/Footer/Footer'
+import { HomeForm } from './Components/HomeForm/HomeForm'
+import { Start1 } from './Components/Start1/Start1';
 
 
 export const App = () => {
@@ -22,8 +24,7 @@ export const App = () => {
           <Route path="/chat" element={<ChatPage></ChatPage>} />
       </Routes>
     </Router>
+    <div>
+    <Start1/>
+    </div>
   );
-}
-
-
-export default App
