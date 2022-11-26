@@ -5,11 +5,13 @@ import axios from 'axios';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import L from "leaflet";
 
+import SearchBar from '../../../Components/SearchBar/SearchBar';
 
 const Maps = () => {
 
     const [guardians, setGuardians] = useState([]);
     const [ubications, setUbications] = useState([]);
+    const [search, setSearch] = useState([]);
 
     useEffect (() => {
 
@@ -22,6 +24,7 @@ const Maps = () => {
             let mappedUbications = guardiansMap(guardians);
             console.log(mappedUbications);
             setUbications(mappedUbications);
+            setSearch(ubications);
         };
     
         getData();
@@ -43,6 +46,20 @@ const Maps = () => {
         })
     
         return mappedUbications;
+    };
+
+    const searchUbications = (value) => {
+        if (value.length < 1) {
+          return setSearch(ubications);
+        }
+
+        console.log(value);
+        const filtered = search.filter((ubication) =>
+          ubication.name.toLowerCase().includes(value.toLowerCase())
+        );
+
+        console.log(filtered);
+        setSearch(filtered);
     };
 
     const blueIcon = L.icon({
@@ -79,6 +96,7 @@ const Maps = () => {
 
     return (
         <>
+            <SearchBar setSearch={searchUbications}></SearchBar>
             <div className='map-container'>
                 <MapContainer className='map' center={[40.416761, -3.703691]} zoom={13}>
                     <TileLayer
@@ -86,7 +104,7 @@ const Maps = () => {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {
-                        ubications.map((ubication) => {
+                        search.map((ubication) => {
                             return (
                                 <Marker position={[ubication.latitude, ubication.longitude]} icon={redIcon}>
                                     <Popup>
