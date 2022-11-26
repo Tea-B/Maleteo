@@ -17,6 +17,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import DateInPage from './Pages/HomePage/DateInPage';
 import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
+import ReservePage from './Pages/HomePage/ReservePage';
 
 
 
@@ -32,6 +33,7 @@ export const App = () => {
           <Route path="/home/datein" element={<DateInPage></DateInPage>} />
           <Route path="/home/dateout" element={<DateOutPage></DateOutPage>} />
           <Route path="/home/details" element={<DetailsPage></DetailsPage>} />
+          <Route path="/home/reserve" element={<ReservePage></ReservePage>} />
           <Route path="/profile" element={<ProfilePage></ProfilePage>} />
           <Route path="/chat" element={<ChatPage></ChatPage>} />
       </Routes>

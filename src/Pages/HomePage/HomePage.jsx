@@ -39,6 +39,8 @@ const HomePage = () => {
     </div>
     </div>
 
+    <Link to={'/home/reserve'}><button className='btn btn-primary mt-3'>GO TO RESERVE(provisional)</button></Link>
+
     <div className='news mt-5 ms-2'>
     <h2>Novedades</h2>
       <div className='news-slider '>
