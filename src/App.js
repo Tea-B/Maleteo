@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter as Router, NavLink } from "react-router-do
 import HomePage from './Pages/HomePage/HomePage';
 import StartPage from './Pages/StartPage/StartPage';
 import LoginRegisterPage from './Pages/LoginRegisterPage/LoginRegisterPage';
+import EditGuardian from './Pages/ProfilePage/EditGuardian/EditGuardian';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import ChatPage from './Pages/ChatPage/ChatPage';
@@ -24,6 +25,7 @@ export const App = () => {
             <Route path="/home" element={<HomePage></HomePage>} />
             <Route path="/map" element={<SearchPage></SearchPage>} />
             <Route path="/profile" element={<ProfilePage></ProfilePage>} />
+            <Route path="/editguardian" element={<EditGuardian></EditGuardian>} />
             <Route path="/chat" element={<ChatPage></ChatPage>} />
         </Routes>
       </Router>
