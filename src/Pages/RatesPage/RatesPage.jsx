@@ -1,8 +1,10 @@
 import React from 'react'
+import Footer from '../../Components/Footer/Footer'
 import './RatesPage.scss'
 
 const RatesPage = () => {
   return (
+    <>
     <div className='rates-gallery container d-flex flex-column gap-4 mt-5'>
         <div>
         <h2>Selecciona</h2>
@@ -28,10 +30,12 @@ const RatesPage = () => {
                 <h2 className='price'>4€</h2>
                 <span className='text'>Por equipaje</span>
             </div>
-            
-
         </div>
+
+        
     </div>
+<Footer></Footer>   
+    </>
   )
 }
 
