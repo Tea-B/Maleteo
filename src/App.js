@@ -9,7 +9,7 @@ import ChatPage from './Pages/ChatPage/ChatPage';
 import { Footer } from './Components/Footer/Footer';
 import { Header } from './Components/Header/Header';
 // import { HomeForm } from './Components/HomeForm/HomeForm';
-import { Start1 } from './Components/Start1/Start1';
+// import { Start1 } from './Components/Start1/Start1';
 import { Start2 } from './Pages/Start2/Start2';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -17,6 +17,7 @@ import DateInPage from './Pages/HomePage/DateInPage';
 import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
 import ReservePage from './Pages/HomePage/ReservePage';
+import RatesPage from './Pages/RatesPage/RatesPage';
 
 
 export const App = () => {
@@ -25,7 +26,7 @@ export const App = () => {
     <Router>
       <Routes>
           <Route exact path="/" element={<StartPage></StartPage>} />
-          <Route exact path="/firststart" element={<Start1></Start1>} />
+          {/* <Route exact path="/firststart" element={<Start1></Start1>} /> */}
           <Route exact path="/secondstart" element={<Start2></Start2>} />
           <Route path="/connect" element={<LoginRegisterPage></LoginRegisterPage>} />
           <Route path="/home" element={<HomePage></HomePage>} />
@@ -36,6 +37,7 @@ export const App = () => {
           <Route path="/home/reserve" element={<ReservePage></ReservePage>} />
           <Route path="/profile" element={<ProfilePage></ProfilePage>} />
           <Route path="/chat" element={<ChatPage></ChatPage>} />
+          <Route path="/rates" element={<RatesPage></RatesPage>} />
       </Routes>
     </Router>
     </LocalizationProvider>
