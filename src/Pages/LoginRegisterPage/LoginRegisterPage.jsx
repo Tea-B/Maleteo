@@ -12,7 +12,7 @@ const LoginRegisterpage = () => {
         <div>
             <Header></Header>
             <div className="bigdiv">
-                <div className="btndiv">
+                <div className="btndiv2">
                     <button className="btn" onClick={() => setShowLogin(true)}>Iniciar sesión</button>
                     <button className="btn" onClick={() => setShowLogin(false)}>Regístrate</button>
                 </div>

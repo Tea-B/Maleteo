@@ -28,8 +28,9 @@ const LoginPage = () => {
     const onSubmit = (data) => {
       console.log(data)
       axios.post(process.env.REACT_APP_BACKEND + "users/login", data).then(
-        res => {localStorage.setItem("token", res.data.token)
-        console.log(res.data)
+        res => {document.cookie = 'token=' + res.data.token;
+        document.cookie = 'user=' +  JSON.stringify(res.data.user);
+        console.log(res.data.token);
         setLogin(true);
         navigate("/home");
         }

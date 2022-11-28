@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { MyContext } from '../../Context/MyContext';
+import { deleteCookie } from '../../utils/deleteCookie';
+import { getCookie } from '../../utils/getCookie';
 import "./ProfilePage.scss";
 
 const ProfilePage = () => {
+  const {login, setLogin} = useContext(MyContext);
+  const stringUser = getCookie('user');
+  const user = JSON.parse(stringUser ? stringUser : '{}');
+
+  const descLog = () => {
+    deleteCookie("token");
+    deleteCookie("user");
+    setLogin(false);
+
+
+  }
+
   return (
     <div>
       <div>
         <div className='prof'>
-          <h1>dfagad</h1>
+          <h1>{user.name}</h1>
           <p className='subtitle'>Puedes ver y editar tu perfil</p>
         </div>
         <div className='photo'>
-          <img src='' alt=''></img>
+          <img className='profimg' src={user.image} alt=''></img>
         </div>
       </div>
       <div className='div-text'>
@@ -23,6 +38,7 @@ const ProfilePage = () => {
         <h3 className='title title-2'>Publica tu anuncio o experiencia</h3>
         <h3 className='title title-2'>Configuración</h3>
         <h3 className='title title-2'>Ayuda</h3>
+        <button className='nextbtn' onClick={() => descLog()}>Cerrar Sesión</button>
       </div>
     </div>
   )

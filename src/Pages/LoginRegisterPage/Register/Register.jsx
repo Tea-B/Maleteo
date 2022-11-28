@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import "./Register.scss";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from 'react-google-login';
+import { Navigate } from "react-router-dom";
 
 
 const RegisterPage = () => {
@@ -30,6 +31,7 @@ const RegisterPage = () => {
         if(age >= 18){
             axios.post(process.env.REACT_APP_BACKEND + "users/register", data).then(res => {
                 console.log("Usuario creado");
+                Navigate("/home");
             })
         } else {
             console.log("Edad incorrecta, debes ser mayor de edad");
