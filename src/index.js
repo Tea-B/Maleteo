@@ -6,19 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <TimeOutProvider>
-  <TimeInProvider>
-  <BaggageProvider>
-  <DateOutProvider>
-  <DateInProvider>
-    {/* <React.StrictMode> */}
-      <App />
-    {/* </React.StrictMode> */}
-  </DateInProvider>
-  </DateOutProvider>
-  </BaggageProvider>
-  </TimeInProvider>
-  </TimeOutProvider>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
