@@ -13,16 +13,13 @@ import DateInPage from './Pages/HomePage/DateInPage';
 import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
 import ReservePage from './Pages/HomePage/ReservePage';
-import RatesPage from './Pages/RatesPage/RatesPage';
-
+import RatesPage  from './Pages/RatesPage/RatesPage';
 import SearchPage from './Pages/SearchPage/SearchPage';
-
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
-
 import ChatPage from './Pages/ChatPage/ChatPage';
-
-import Footer from './Components/Footer/Footer';
-import Header from './Components/Header/Header';
+// import Geokeo from './Pages/positionstack/OpenGetData';
+// import OpenGetData from './Pages/positionstack/OpenGetData';
+// import { PositionstackPage } from './Pages/positionstack/PositionstackPage';
 
 
 export const App = () => {
@@ -42,6 +39,9 @@ export const App = () => {
           <Route path="/profile" element={<ProfilePage></ProfilePage>} />
           <Route path="/chat" element={<ChatPage></ChatPage>} />
           <Route path="/rates" element={<RatesPage></RatesPage>} />
+          {/* <Route path="/calle" element={<PositionstackPage></PositionstackPage>} /> */}
+          {/* <Route path="/calle" element={<Geokeo></Geokeo>} /> */}
+          {/* <Route path="/calle" element={<OpenGetData></OpenGetData>} /> */}
       </Routes>
     </Router>
     </LocalizationProvider>
