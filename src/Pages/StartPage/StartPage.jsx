@@ -1,7 +1,8 @@
 import React from 'react'
 import './StartPage.scss';
 
-export const StartPage = () => {
+const StartPage = () => {
+
   return (
     <main>
       <div className='logo__container'>
@@ -11,3 +12,6 @@ export const StartPage = () => {
     </main>
   )
 }
+
+export default StartPage
+

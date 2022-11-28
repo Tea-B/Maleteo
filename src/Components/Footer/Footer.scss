@@ -1,5 +1,5 @@
 footer{
-    width: 99.6%;
+    width: 100%;
     height: 50px;
     display: flex;
     position: fixed;
@@ -7,8 +7,14 @@ footer{
     justify-content: space-around;
     border: 1px solid grey;
     border-top: 1px solid grey;
+    z-index: 999;
 
     .b-icon__son{
-        margin-top: 5px;
+        margin-top: 8px;
+        z-index: 999;
+
+        & img {
+            height: 32px;
+        }
     }
 }

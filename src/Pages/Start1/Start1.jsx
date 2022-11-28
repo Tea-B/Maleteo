@@ -1,12 +1,12 @@
 import React from 'react'
 import './Start1.scss';
+
 import { useNavigate } from 'react-router-dom';
-
-
 
 export const Start1 = () => {
 
-  const navigate = useNavigate() 
+  const navigate = useNavigate()
+
   return (
     <main className='b-main__starts'>
         <div className='b-card__container'>
@@ -20,4 +20,4 @@ export const Start1 = () => {
 }
 
 
-export default Start1
+export default Start1;

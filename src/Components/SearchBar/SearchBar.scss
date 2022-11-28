@@ -1,0 +1,27 @@
+.b__searcher {
+    display: flex;
+    justify-content: center;
+    margin: 25px 20px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    z-index: 1;
+
+    img {
+        position: relative;;
+        top: 18px;
+        left: 24px;
+        width: 15px;
+        height: 15px;
+    }
+}
+
+.b-searcher__location{
+    align-items: center;
+    background-color: #fbfbfb;
+    outline: none;
+    border: none;
+    padding: 15px 30px;
+    width: 80%;
+    font-size: 13px;
+    border-radius: 5px;
+}

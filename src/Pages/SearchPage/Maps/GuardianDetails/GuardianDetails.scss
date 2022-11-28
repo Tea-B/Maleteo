@@ -1,0 +1,29 @@
+.ubication-details {
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & button {
+        margin-right: 83px;
+        padding: 0px 5px;
+    }
+
+    &-active {
+        position: relative;
+        bottom: -200px;
+        width: 100%;
+        height: 200px;
+        background-color: black;
+        transform: translate(0px, -100%);;
+        transition: transform .5s;
+    }
+}
+
+.button-active {
+    transform: translate(0px, -100%);;
+    transition: transform .5s;
+}
+
