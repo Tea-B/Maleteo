@@ -13,23 +13,39 @@ import {contextBaggage} from '../../Context/BaggageProvider';
 import { contextTimeIn } from '../../Context/TimeInProvider';
 import { useEffect } from 'react';
 import { contextTimeOut } from '../../Context/TimeOutProvider';
+import { contextDateIn } from '../../Context/DateInProvider';
+import { contextDateOut } from '../../Context/DateOutProvider';
 
 
 export default function BasicTimePicker() {
     const {baggage, setBaggage} = React.useContext(contextBaggage);
-    const {setTimeIn} = React.useContext(contextTimeIn);
-    const {setTimeOut} = React.useContext(contextTimeOut);
+    const {timeIn, setTimeIn} = React.useContext(contextTimeIn);
+    const {timeOut, setTimeOut} = React.useContext(contextTimeOut);
+    const {dateIn} = React.useContext(contextDateIn);
+    const {dateOut} = React.useContext(contextDateOut);
 
 
   const [myTimeIn, setMyTimeIn] = React.useState('12');
   const [myTimeOut, setMyTimeOut] = React.useState('12');
 
+  console.log(dateOut)
+
+const correctDate = () => {
+  if(dateOut.$D === dateIn.$D && dateOut.$M === dateIn.$M  && myTimeIn >= myTimeOut || myTimeIn === "12" && myTimeOut ==="12"){
+    return (<span className='atention'>Seleciona una hora correcta</span>)
+  } else{
+    return (<Link to={'/home'}><button className='btn-arrow'><img className='icon-arrow-right' src={ArrowRight} alt="arrow"/></button></Link>)
+  }
+}
+
+
 useEffect(() =>{
     setTimeIn(myTimeIn)
-})
+},[myTimeIn])
 useEffect(() =>{
   setTimeOut(myTimeOut)
-})
+},[myTimeOut])
+
   const handleChange = (event) => {
     setBaggage(event.target.value);
   };
@@ -44,6 +60,7 @@ useEffect(() =>{
             <h3>Depósito</h3>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
             <TimePicker
+                ampm={false}
                 label="Depósito"
                 value={myTimeIn}
                 onChange={(newValue) => {
@@ -58,6 +75,7 @@ useEffect(() =>{
                 <h3>Retirada</h3>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
             <TimePicker
+                ampm={false}
                 label="Retirada"
                 value={myTimeOut}
                 onChange={(newValue) => {
@@ -100,8 +118,8 @@ useEffect(() =>{
 
   </div>
 
-    
-       <Link to={'/home'}><button className='btn-arrow'><img className='icon-arrow-right' src={ArrowRight} alt="arrow"/></button></Link>
+  {correctDate()}
+       
     
     </>
   );

@@ -1,18 +1,12 @@
 import React from "react";
+import SearchBar from "../SearchBar/SearchBar";
 import "./HomeForm.scss";
 
 export const HomeForm = () => {
   return (
     <section className="b-form__container">
       <form className="b-home-form">
-        <div className="b__searcher">
-          <img src="./Assets/Images/searcher-loaction-home" alt=""></img>
-          <input
-            placeholder="¿Donde te encuentras? Madrid, Barcelona"
-            className="b-searcher__location"
-            type="text"
-          ></input>
-        </div>
+        <SearchBar></SearchBar>
         <div className="b-buttons__container">
           <div className="b-son__container">
             <button className="b-button__deposit">
