@@ -1,3 +1,4 @@
+import logo from './logo.svg';
 import './App.css';
 import { Route, Routes, BrowserRouter as Router, NavLink, Link } from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
@@ -56,4 +57,4 @@ export const App = () => {
   );
 }
 
-export default App
+export default App;
