@@ -1,0 +1,88 @@
+.home-input{
+    height: 50px;
+    border-radius: 6px;
+    width: 25vh;
+    box-shadow: rgba(0, 0, 0, 0.301) 1px 1px 5px ;
+}
+
+.home-input-search{
+    height: 50px;
+    border:none;
+    border-radius: 6px;
+    width: 25vw;
+    box-shadow: rgba(0, 0, 0, 0.301) 1px 1px 5px ;
+}
+
+.home-input{
+    font-size: 17px;
+    font-weight: 400;
+    color:rgba(0, 0, 0, 0.753);
+    font-family:Arial, Helvetica, sans-serif
+    
+}
+
+.home-btn-search{
+    border: none;
+    background-color: rgb(246, 143, 36);
+    color: white;
+    font-size: 20px;
+}
+
+.news-slider{
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    height: 25vh;
+}
+
+.img-container{
+    // width:10px ;
+    // height: 80px;
+    
+    display: contents;
+    
+    
+}
+
+.checked {
+    color: rgb(248, 231, 28);
+}
+
+img{
+
+    width: 100%;
+
+}
+
+p{
+    margin:0;
+    padding:0;
+}
+
+.box-experience{
+    p{
+        color:rgba(0, 0, 0, 0.704)
+    }
+}
+
+.btn-showMore{
+    width: 35vh;
+    height: 50px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid rgb(246, 143, 36);
+    color: rgb(255, 130, 0);
+    font-size: 20px;
+    font-weight:500;
+    margin:70px;
+}
+
+
+
+.noStyle{
+    text-decoration: none;
+}
+
+.icon{
+    width: 19px;
+}
