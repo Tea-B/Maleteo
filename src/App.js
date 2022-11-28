@@ -39,9 +39,6 @@ export const App = () => {
           <Route path="/profile" element={<ProfilePage></ProfilePage>} />
           <Route path="/chat" element={<ChatPage></ChatPage>} />
           <Route path="/rates" element={<RatesPage></RatesPage>} />
-          {/* <Route path="/calle" element={<PositionstackPage></PositionstackPage>} /> */}
-          {/* <Route path="/calle" element={<Geokeo></Geokeo>} /> */}
-          {/* <Route path="/calle" element={<OpenGetData></OpenGetData>} /> */}
       </Routes>
     </Router>
     </LocalizationProvider>
