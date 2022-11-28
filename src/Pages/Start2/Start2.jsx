@@ -20,3 +20,4 @@ export const Start2 = () => {
   )
 }
   
+export default Start2;

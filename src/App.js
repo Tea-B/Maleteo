@@ -12,9 +12,9 @@ import { Footer } from './Components/Footer/Footer';
 import { Header } from './Components/Header/Header';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import StartPage  from './Pages/StartModal/StartModal';
-import Start2 from './Pages/Start2/Start2';
 import LoginRegisterPage from './Pages/LoginRegisterPage/LoginRegisterPage';
+import StartPage from './Pages/StartPage/StartPage';
+import Start2 from './Pages/Start2/Start2'
 import DateInPage from './Pages/HomePage/DateInPage';
 import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
@@ -49,7 +49,7 @@ export const App = () => {
             <Route path="/profile" element={<ProfilePage></ProfilePage>} />
             <Route path="/editguardian" element={<EditGuardian></EditGuardian>} />
             <Route path="/chat" element={<ChatPage></ChatPage>} />
-            <Route path="/rates" element={<RatesPage></RatesPage>} />
+            <Route path="/secondstart/rates" element={<RatesPage></RatesPage>} />
             {/* <Route path="/calle" element={<PositionstackPage></PositionstackPage>} /> */}
             {/* <Route path="/calle" element={<Geokeo></Geokeo>} /> */}
             {/* <Route path="/calle" element={<OpenGetData></OpenGetData>} /> */}
