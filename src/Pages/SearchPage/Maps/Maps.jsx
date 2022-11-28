@@ -1,66 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./Maps.scss"
 
-import axios from 'axios';
+import { MapContext } from '../SearchPage';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import L from "leaflet";
 
-import SearchBar from '../../../Components/SearchBar/SearchBar';
+import GuardianDetails from './GuardianDetails/GuardianDetails';
 
 const Maps = () => {
 
-    const [guardians, setGuardians] = useState([]);
-    const [ubications, setUbications] = useState([]);
-    const [search, setSearch] = useState([]);
-
-    useEffect (() => {
-
-        const getData = async ()=> {
-            const { data } = await axios.get("http://localhost:3030/guardians/getall");
-
-            console.log(data);
-            setGuardians(data);
-
-            let mappedUbications = guardiansMap(guardians);
-            console.log(mappedUbications);
-            setUbications(mappedUbications);
-            setSearch(ubications);
-        };
-    
-        getData();
-
-    }, []);
-
-    let guardiansMap = (guardians) => {
-
-        let mappedUbications = [];
-    
-        guardians.forEach((guardian) => {
-            let { "_id": guardianID, "ubicationsID": ubications } = guardian;
-            console.log(guardianID);
-            console.log(ubications);
-            ubications.forEach((ubication) => {
-                let { _id, name, images, description, disponibility, latitude, longitude } = ubication;
-                mappedUbications.push({guardianID, _id, name, images, description, disponibility, latitude, longitude});
-            });
-        })
-    
-        return mappedUbications;
-    };
-
-    const searchUbications = (value) => {
-        if (value.length < 1) {
-          return setSearch(ubications);
-        }
-
-        console.log(value);
-        const filtered = search.filter((ubication) =>
-          ubication.name.toLowerCase().includes(value.toLowerCase())
-        );
-
-        console.log(filtered);
-        setSearch(filtered);
-    };
+    const { guardians, setGuardians, ubications, setUbications, search, setSearch, selected, setSelected } = useContext(MapContext);
 
     const blueIcon = L.icon({
         iconUrl: '../../../../assets/images/blue-icon.png',
@@ -96,9 +45,8 @@ const Maps = () => {
 
     return (
         <>
-            <SearchBar setSearch={searchUbications}></SearchBar>
             <div className='map-container'>
-                <MapContainer className='map' center={[40.416761, -3.703691]} zoom={13}>
+                <MapContainer className='map' center={[40.416761, -3.703691]} zoom={13} zoomControl={false}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -106,7 +54,7 @@ const Maps = () => {
                     {
                         search.map((ubication) => {
                             return (
-                                <Marker position={[ubication.latitude, ubication.longitude]} icon={redIcon}>
+                                <Marker position={[ubication.latitude, ubication.longitude]} icon={redIcon} click={setSelected(ubication)}>
                                     <Popup>
                                         {ubication.name}
                                     </Popup>
@@ -116,6 +64,7 @@ const Maps = () => {
                     }
                 </MapContainer>
             </div>
+            <GuardianDetails></GuardianDetails>
         </>
     )
 }

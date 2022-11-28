@@ -1,6 +1,6 @@
 footer{
-    width: 100%;
-    height: 55px;
+    width: 99.6%;
+    height: 50px;
     display: flex;
     position: fixed;
     bottom: 0px;
@@ -8,12 +8,15 @@ footer{
     align-items: center;
     box-shadow: 0px 0px 1px 0px;
     background-color: white;
+    z-index: 999;
 
     .b-icon__son{
         object-fit: cover;
         margin-top: 8px;
-        &img{
+        z-index: 999;
+
+        & img {
             height: 32px;
-        }
+        }    
     }
 }
