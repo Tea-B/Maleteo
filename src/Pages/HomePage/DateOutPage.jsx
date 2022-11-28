@@ -7,10 +7,19 @@ import { CalendarPicker } from '@mui/x-date-pickers/CalendarPicker';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { contextDateOut } from '../../Context/DateOutProvider';
+import { contextDateIn } from '../../Context/DateInProvider';
 
 export default function SubComponentsPickers() {
   const [myDateOut, setMyDateOut] = React.useState(dayjs());
   const {setDateOut} = React.useContext(contextDateOut);
+  const {dateIn} = React.useContext(contextDateIn);
+
+  const dateCorrect = () => {
+    if(myDateOut>dateIn){
+        return (<Link to={'/home/details'}><button className='btn'>Continuar</button></Link>)
+    }else{
+        return("Porfavor, selecciona una fecha correcta")
+    }}
    
   useEffect(() =>{
       setDateOut(myDateOut)
@@ -18,7 +27,7 @@ export default function SubComponentsPickers() {
 
   return (
     <div className='container d-flex flex-wrap justify-content-center pt-4'>
-    <h1>Elige la fecha de </h1>
+    <h1>Elige la fecha de retirada</h1>
     <div className=''>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Grid container spacing={3}>
@@ -28,8 +37,8 @@ export default function SubComponentsPickers() {
         </Grid>
     </LocalizationProvider>
     </div>
-    <Link to={'/home/details'}><button className='btn'>Continuar</button></Link>
     
+    {dateCorrect()}
     </div>
   );
 }
