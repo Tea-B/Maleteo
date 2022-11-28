@@ -1,14 +1,12 @@
 import './App.css';
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
-import StartPage  from './Pages/StartModal/StartModal';
 import LoginRegisterPage from './Pages/LoginRegisterPage/LoginRegisterPage';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import ChatPage from './Pages/ChatPage/ChatPage';
 import { Footer } from './Components/Footer/Footer';
 import { Header } from './Components/Header/Header';
-import { Start2 } from './Pages/Start2/Start2';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import DateInPage from './Pages/HomePage/DateInPage';
@@ -16,6 +14,8 @@ import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
 import ReservePage from './Pages/HomePage/ReservePage';
 import RatesPage from './Pages/RatesPage/RatesPage';
+import StartPage from './Pages/StartPage/StartPage';
+import Start2 from './Pages/Start2/Start2';
 
 export const App = () => {
   return (
@@ -33,7 +33,7 @@ export const App = () => {
           <Route path="/home/reserve" element={<ReservePage></ReservePage>} />
           <Route path="/profile" element={<ProfilePage></ProfilePage>} />
           <Route path="/chat" element={<ChatPage></ChatPage>} />
-          <Route path="/rates" element={<RatesPage></RatesPage>} />
+          <Route path="/secondstart/rates" element={<RatesPage></RatesPage>} />
       </Routes>
     </Router>
     </LocalizationProvider>
