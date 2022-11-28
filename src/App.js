@@ -8,7 +8,6 @@ import ChatPage from './Pages/ChatPage/ChatPage';
 import { useState } from 'react';
 import { MyContext } from './Context/MyContext';
 import { getCookie } from './utils/getCookie';
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import StartPage  from './Pages/StartModal/StartModal';
@@ -19,12 +18,6 @@ import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
 import ReservePage from './Pages/HomePage/ReservePage';
 import RatesPage  from './Pages/RatesPage/RatesPage';
-import SearchPage from './Pages/SearchPage/SearchPage';
-import ProfilePage from './Pages/ProfilePage/ProfilePage';
-import ChatPage from './Pages/ChatPage/ChatPage';
-// import Geokeo from './Pages/positionstack/OpenGetData';
-// import OpenGetData from './Pages/positionstack/OpenGetData';
-// import { PositionstackPage } from './Pages/positionstack/PositionstackPage';
 
 export const App = () => {
 
@@ -52,9 +45,7 @@ export const App = () => {
             <Route path="/editguardian" element={<EditGuardian></EditGuardian>} />
             <Route path="/chat" element={<ChatPage></ChatPage>} />
             <Route path="/rates" element={<RatesPage></RatesPage>} />
-            {/* <Route path="/calle" element={<PositionstackPage></PositionstackPage>} /> */}
-            {/* <Route path="/calle" element={<Geokeo></Geokeo>} /> */}
-            {/* <Route path="/calle" element={<OpenGetData></OpenGetData>} /> */}
+        
         </Routes>
       </Router>
       </LocalizationProvider>
