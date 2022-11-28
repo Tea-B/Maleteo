@@ -3,6 +3,7 @@ import Footer from '../../Components/Footer/Footer'
 import './RatesPage.scss'
 
 const RatesPage = () => {
+    
   return (
     <>
     <div className='rates-gallery container d-flex flex-column gap-4 mt-5'>
@@ -34,7 +35,7 @@ const RatesPage = () => {
 
         
     </div>
-<Footer></Footer>   
+    <Footer></Footer>   
     </>
   )
 }
