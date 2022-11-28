@@ -10,7 +10,9 @@ footer{
 
     .b-icon__son{
         object-fit: cover;
-        width: 32px;
-        margin-top: 5px;
+        margin-top: 8px;
+        &img{
+            height: 32px;
+        }
     }
 }

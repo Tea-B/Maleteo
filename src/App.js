@@ -14,7 +14,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import DateInPage from './Pages/HomePage/DateInPage';
 import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
-import { ThanksPage } from './Pages/Thanks/ThanksPage';
 
 export const App = () => {
   return (
