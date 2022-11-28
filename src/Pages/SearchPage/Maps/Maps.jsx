@@ -54,7 +54,14 @@ const Maps = () => {
                     {
                         search.map((ubication) => {
                             return (
-                                <Marker position={[ubication.latitude, ubication.longitude]} icon={redIcon} click={setSelected(ubication)}>
+                                <Marker position={[ubication.latitude, ubication.longitude]} icon={redIcon}
+                                eventHandlers={{
+                                    click: (e) => {
+                                        console.log('marker clicked', e)
+                                        setSelected(ubication)
+                                        console.log(ubication)
+                                    },
+                                }}>
                                     <Popup>
                                         {ubication.name}
                                     </Popup>

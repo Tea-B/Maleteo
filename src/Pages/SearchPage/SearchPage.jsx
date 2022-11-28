@@ -18,22 +18,17 @@ const SearchPage = () => {
 
   useEffect (() => {
 
-      const getData = async ()=> {
+      const getData = async () => {
           const { data } = await axios.get("http://localhost:3030/guardians/getall");
 
           console.log(data);
           setGuardians(data);
 
-          let mappedUbications = guardiansMap(guardians);
+          let mappedUbications = guardiansMap(data);
           console.log(mappedUbications);
           setUbications(mappedUbications);
-          setSearch(ubications);
-          
-          if (selected == null || undefined) {
-            setSelected(ubications[0]);
-          }
-
-          console.log(selected);
+          setSearch(mappedUbications);
+          setSelected(mappedUbications[0]);
       };
   
       getData();
@@ -50,12 +45,19 @@ const SearchPage = () => {
           console.log(ubications);
           ubications.forEach((ubication) => {
               let { _id, name, images, description, disponibility, latitude, longitude } = ubication;
+              // let dataRoad = getRoad(latitude, longitude);
               mappedUbications.push({guardianID, _id, name, images, description, disponibility, latitude, longitude});
           });
       })
   
       return mappedUbications;
   };
+
+  // let getRoad = async (latitude, longitude) => {
+  //   const { data } = await axios.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
+  //   console.log(data);
+  //   return data.address;
+  // }
 
   const searchUbications = (value) => {
       if (value.length < 1) {
@@ -79,7 +81,9 @@ const SearchPage = () => {
 
       <SearchBar setSearch={searchUbications}></SearchBar>
 
-      <Maps></Maps>
+      {search.length === 0 && <Maps></Maps>}
+      {search.length > 0 && <Maps></Maps>}
+      
       
       <Footer></Footer>
     </MapContext.Provider>
