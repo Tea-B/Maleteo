@@ -14,6 +14,14 @@ export default function SubComponentsPickers() {
   const [myDateIn, setMyDateIn] = React.useState(dayjs());
   const {setDateIn} = React.useContext(contextDateIn);
    
+  const dateCorrect = () => {
+    if(myDateIn < new Date()){
+      return (<span className='atention'>Selecciona una fecha correcta</span>)
+    }else{
+      return (<Link to={'/home/dateout'}><button className='btn'>Continuar</button></Link>)
+    }
+  }
+
     useEffect(() =>{
         setDateIn(myDateIn)
     })
@@ -29,7 +37,7 @@ export default function SubComponentsPickers() {
         </Grid>
     </LocalizationProvider>
     </div>
-    <Link to={'/home/dateout'}><button className='btn'>Continuar</button></Link>
+    {dateCorrect()}
     <Link to={'/home'}><button className='btn'>home(provisional)</button></Link>
     
     </div>

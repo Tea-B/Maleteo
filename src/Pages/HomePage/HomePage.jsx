@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Footer from '../../Components/Footer/Footer';
 import {contextBaggage} from '../../Context/BaggageProvider';
 import {contextDateIn} from '../../Context/DateInProvider';
 import { contextDateOut } from '../../Context/DateOutProvider';
@@ -15,15 +16,36 @@ const HomePage = () => {
   const {timeIn} = React.useContext(contextTimeIn);
   const {timeOut} = React.useContext(contextTimeOut);
 
-  const { $D, $M } = dateIn
-  const { $D:$D_out, $M:$M_out } = dateOut
-  const { $H, $m } = timeIn
-  const { $H:$H_out, $m:$m_out } = timeOut
+  const optionDate = { month: 'short', day: 'numeric' }
+  const optionTime = { hour: 'short', minute: 'short'}
+
+  const myTimeIn = new Date(timeIn).toTimeString().slice(0,5)
+  const myTimeOut = new Date(timeOut).toTimeString().slice(0,5)
+  const myDateIn = new Date(dateIn).toLocaleDateString('es-SP', optionDate)
+  const myDateOut = new Date(dateOut).toLocaleDateString('es-SP', optionDate)
   
-  const dateTimeIn = $H + ":" + $m + ", " + $D + "/" + $M
-  const dateTimeOut = $H_out + ":" + $m_out + ", " + $D_out + "/" + $M_out
-  
+  const dateInCorrect = () => {
+    if(myTimeIn === "12" || dateIn === "0"){
+      return ("Depósito")
+    }else{
+      return (myTimeIn + ", " + myDateIn)
+    }
+  }
+
+  const dateOutCorrect = () => {
+    if(myTimeOut === "12" || dateIn === "0"){
+      return ("Retirada")
+    }else{
+      return (myTimeOut + ", " + myDateOut)
+    }
+  }
+
+
+
+    console.log(myTimeIn);
+
   return (
+    <>
     <div className='mt-5 d-flex flex-column align-items-center'>
 
     <div className='d-flex flex-wrap gap-3 mt-2 container'>
@@ -32,12 +54,14 @@ const HomePage = () => {
         <input className='w-100 home-input-search' type="text"></input>
       </div>
       <div className='d-flex flex-wrap gap-3 justify-content-center'>
-      <Link className='noStyle' to={'/home/datein'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=''></img><span>{timeIn==="12"?"Depósito":dateTimeIn}</span></div></Link>
-      <Link className='noStyle' to={'/home/dateout'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=""></img><span>{timeOut==="12"?"Retirada":dateTimeOut}</span></div></Link>
+      <Link className='noStyle' to={'/home/datein'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=''></img><span>{dateInCorrect()}</span></div></Link>
+      <Link className='noStyle' to={'/home/dateout'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=""></img><span>{dateOutCorrect()}</span></div></Link>
       <Link className='noStyle' to={'/home/details'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/baggage.png' alt=""></img><span>{baggage!=="0"?baggage + " piezas":"Nº de piezas"}</span></div></Link>
       <button className='home-input home-btn-search'>Buscar</button>
     </div>
     </div>
+
+    <Link to={'/home/reserve'}><button className='btn btn-primary mt-3'>GO TO RESERVE(provisional)</button></Link>
 
     <div className='news mt-5 ms-2'>
     <h2>Novedades</h2>
@@ -94,6 +118,8 @@ const HomePage = () => {
 
     <button className='btn-showMore'>Mostrar más</button>
     </div>
+    <Footer></Footer>
+    </>
   )
 }
 
