@@ -1,4 +1,3 @@
-import React from 'react'
 import './Header.scss';
 // import { BrowserRouter } from 'react-router-dom';
 
@@ -12,4 +11,3 @@ const Header = () => {
 }
 
 export default Header
-
