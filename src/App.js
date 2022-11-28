@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, BrowserRouter as Router, NavLink, Link } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router, Link } from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
 import EditGuardian from './Pages/ProfilePage/EditGuardian/EditGuardian';
 import SearchPage from './Pages/SearchPage/SearchPage';
