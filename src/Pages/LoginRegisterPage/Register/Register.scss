@@ -1,0 +1,29 @@
+.center{
+    width: 330px;
+    position: relative;
+    left: 45px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.divtitle2 {
+    width: 300px;
+    font-size: 16px;
+}
+
+.check {
+    display: flex;
+    margin-top: 10px;
+}
+.checkbox {
+  position: relative;
+  bottom: 5px;
+
+}
+
+.textspan {
+    font-size: 11px;
+    margin-left: 5px;
+}

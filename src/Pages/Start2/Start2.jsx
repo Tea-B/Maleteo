@@ -19,6 +19,4 @@ export const Start2 = () => {
     </main>
   )
 }
-
-
-export default Start2;
+  

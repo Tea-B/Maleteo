@@ -16,9 +16,9 @@ root.render(
   <BaggageProvider>
   <DateOutProvider>
   <DateInProvider>
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <App />
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </DateInProvider>
   </DateOutProvider>
   </BaggageProvider>
