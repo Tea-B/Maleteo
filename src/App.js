@@ -1,24 +1,59 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes, BrowserRouter as Router, NavLink, Link } from "react-router-dom";
+import HomePage from './Pages/HomePage/HomePage';
+import EditGuardian from './Pages/ProfilePage/EditGuardian/EditGuardian';
+import SearchPage from './Pages/SearchPage/SearchPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import ChatPage from './Pages/ChatPage/ChatPage';
+import { useState } from 'react';
+import { MyContext } from './Context/MyContext';
+import { getCookie } from './utils/getCookie';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import StartPage  from './Pages/StartPage/StartPage';
+import Start2 from './Pages/Start2/Start2';
+import LoginRegisterPage from './Pages/LoginRegisterPage/LoginRegisterPage';
+import DateInPage from './Pages/HomePage/DateInPage';
+import DateOutPage from './Pages/HomePage/DateOutPage';
+import DetailsPage from './Pages/HomePage/DetailsPage';
+import ReservePage from './Pages/HomePage/ReservePage';
+import RatesPage from './Pages/RatesPage/RatesPage';
 
-function App() {
+// import Geokeo from './Pages/positionstack/OpenGetData';
+// import OpenGetData from './Pages/positionstack/OpenGetData';
+// import { PositionstackPage } from './Pages/positionstack/PositionstackPage';
+
+export const App = () => {
+
+  const[login, setLogin] = useState(!!getCookie('token'));
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={{login, setLogin}}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Router>
+        <Routes>
+            <Route exact path="/" element={<StartPage></StartPage>} />
+            <Route path="/secondstart" element={<Start2></Start2>} />
+            <Route path="/connect" element={<LoginRegisterPage></LoginRegisterPage>} />
+            {login && <Route path="/home" element={<HomePage></HomePage>} />}
+            {login && <Route path="/map" element={<SearchPage></SearchPage>} />}
+            {login && <Route path="/home/datein" element={<DateInPage></DateInPage>} />}
+            {login && <Route path="/home/dateout" element={<DateOutPage></DateOutPage>} />}
+            {login && <Route path="/home/details" element={<DetailsPage></DetailsPage>} />}
+            {login && <Route path="/home/reserve" element={<ReservePage></ReservePage>} />}
+            {login && <Route path="/profile" element={<ProfilePage></ProfilePage>} />}
+            {login && <Route path="/editguardian" element={<EditGuardian></EditGuardian>} />}
+            {login && <Route path="/chat" element={<ChatPage></ChatPage>} />}
+            <Route path="/rates" element={<RatesPage></RatesPage>} />
+            {/* <Route path="/calle" element={<PositionstackPage></PositionstackPage>} /> */}
+            {/* <Route path="/calle" element={<Geokeo></Geokeo>} /> */}
+            {/* <Route path="/calle" element={<OpenGetData></OpenGetData>} /> */}
+        </Routes>
+      </Router>
+      </LocalizationProvider>
+    </MyContext.Provider>
   );
 }
 
