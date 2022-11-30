@@ -1,11 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import './Header.scss';
 // import { BrowserRouter } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({navigateTo}) => {
+
+  const navigate = useNavigate()
 
   return (
     <div className='back-header__contain'>
-        <img className='b-back__icon' src='Assets/Images/back-icon.png' alt=''></img>
+        <button onClick={()=>navigate(navigateTo)}>
+        <img className='b-back__icon' src='/arrow-left-short.svg' alt=''></img>
+        </button>
     </div>
   )
 }

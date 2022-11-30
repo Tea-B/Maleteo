@@ -1,10 +1,13 @@
 import React from 'react'
 import Footer from '../../Components/Footer/Footer'
+import Header from '../../Components/Header/Header'
 import './RatesPage.scss'
 
 const RatesPage = () => {
+    
   return (
     <>
+    <Header navigateTo={'/secondstart'}></Header>
     <div className='rates-gallery container d-flex flex-column gap-4 mt-5'>
         <div>
         <h2>Selecciona</h2>
@@ -34,7 +37,6 @@ const RatesPage = () => {
 
         
     </div>
-<Footer></Footer>   
     </>
   )
 }

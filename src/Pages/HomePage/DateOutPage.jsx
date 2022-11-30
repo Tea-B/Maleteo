@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { contextDateOut } from '../../Context/DateOutProvider';
 import { contextDateIn } from '../../Context/DateInProvider';
+import Header from '../../Components/Header/Header';
 
 export default function SubComponentsPickers() {
   const [myDateOut, setMyDateOut] = React.useState(dayjs());
@@ -16,16 +17,17 @@ export default function SubComponentsPickers() {
 
   const dateCorrect = () => {
     if(myDateOut>dateIn){
-        return (<Link to={'/home/details'}><button className='btn'>Continuar</button></Link>)
+        return (<Link to={'/home/details'}><button className='btn btn-outline-primary'>Continuar</button></Link>)
     }else{
-        return("Porfavor, selecciona una fecha correcta")
+        return(<span className='atention'>Por favor, selecciona una fecha correcta</span>)
     }}
    
   useEffect(() =>{
       setDateOut(myDateOut)
   });
 
-  return (
+  return (<>
+  <Header navigateTo={'/home/datein'}></Header>
     <div className='container d-flex flex-wrap justify-content-center pt-4'>
     <h1>Elige la fecha de retirada</h1>
     <div className=''>
@@ -40,5 +42,5 @@ export default function SubComponentsPickers() {
     
     {dateCorrect()}
     </div>
-  );
+    </>);
 }

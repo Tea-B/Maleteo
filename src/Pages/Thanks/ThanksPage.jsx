@@ -13,7 +13,7 @@ export const ThanksPage = () => {
         <div className="b-image__contain">
           <img
             className="b-thanks__image"
-            src="./Assets/Images/phoenix-thanks.png"
+            src="/Assets/Images/phoenix-thanks.png"
             alt=""
           ></img>
         </div>
@@ -25,10 +25,10 @@ export const ThanksPage = () => {
         </p>
       </div>
       <div className="thanks-back__cross">
-        <button onClick={()=> navigate('/')}>
+        <button onClick={()=> navigate('/home')}>
           <img
             className="b-cross__image"
-            src="./Assets/Images/cross-thanks-img.jpg"
+            src="/Assets/Images/cross-thanks-img.jpg"
             alt=""
           ></img>
         </button>

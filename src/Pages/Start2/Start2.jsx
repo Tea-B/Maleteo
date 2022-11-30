@@ -1,21 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Start2.scss';
 
-const Start2 = () => {
+export const Start2 = () => {
 
+  const navigate = useNavigate();
+  
   return (
     <main className='b-main__starts'>
-      <div className='b-card__container'>
-          <img className='b-hero__image' src='./Assets/Images/world-icon-start2.png' alt=''></img>
-          <h3 className='b-starts__paragraph'>El mismo precio en cualquier parte</h3>
-          <p >Dispondrás de un precio fijo estés donde estés sin umportar el tamaño o el peso</p>
-          <button className='b-continue__button'>Continuar    👉🏽</button>
-          <Link to={'/rates'} className="b-link-paragraph mt-2"><p>Consulta los precios</p></Link>
-      </div>
+        <div className='b-card__container'>
+            <img className='b-hero__image' src='./Assets/Images/world-icon-start2.png' alt=''></img>
+            <h3 className='b-starts__title'>El mismo precio en cualquier parte</h3>
+            <p className='b-starts__paragraph' >Dispondrás de un precio fijo estés donde estés sin umportar el tamaño o el peso</p>
+            <button onClick={() => navigate('/connect')} className='b-continue__button'>Empezar Ya  👉🏽</button>
+            <p onClick={() => navigate('/rates')} className='b-link-paragraph'>Consulta los precios</p>
+        </div>
     </main>
   )
 }
-
+  
 export default Start2;
 

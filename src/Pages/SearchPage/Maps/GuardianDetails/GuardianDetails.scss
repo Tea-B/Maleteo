@@ -7,12 +7,15 @@
     align-items: center;
     transition: transform .5s;
 
-    & button {
+    .btn-toggle{
         margin-right: 79px;
         padding: 0px 5px;
-        border: none;
-        border-radius: 10px 10px -10px -10px;
+        box-shadow: 0px 0px 7px 1px;;
+        // border: 1px solid black;
+        // border-radius: 10px 10px -10px -10px;
+        border-radius: 6px;
         background-color: white;
+        color:black
     }
 
     &-active {
@@ -45,11 +48,36 @@
         font-size: 12px;
         list-style: none;
 
+        &-house-name{
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        &-guardian-name{
+            font-size: 16px;
+            color: rgb(0, 0, 0)
+        }
+
+        &-guardian-description{
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.789)
+        }
+        &-guardian-email{
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.789)  
+        }
+
         & li {
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            
         }
     }
 }
 
-
+.btn-reserve-now{
+    border: 1px solid rgb(246, 143, 36);
+    border-radius: 6px;
+    padding: 3px;
+    color: rgb(246, 143, 36);
+}
 

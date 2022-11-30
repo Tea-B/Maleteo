@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import {contextBaggage} from '../../Context/BaggageProvider';
 import {contextDateIn} from '../../Context/DateInProvider';
@@ -9,6 +9,8 @@ import { contextTimeOut } from '../../Context/TimeOutProvider';
 import './HomePage.scss'
 
 const HomePage = () => {
+
+  const navigate = useNavigate();
 
   const {baggage} = React.useContext(contextBaggage);
   const {dateIn} = React.useContext(contextDateIn);
@@ -40,7 +42,7 @@ const HomePage = () => {
     }
   }
 
-
+  
 
     console.log(myTimeIn);
 
@@ -50,18 +52,23 @@ const HomePage = () => {
 
     <div className='d-flex flex-wrap gap-3 mt-2 container'>
     <h2>Encuentra tu guardián</h2>
-      <div className='w-100'>
-        <input className='w-100 home-input-search' type="text"></input>
+    <div className='w-100'><Link className='text-search' to={'/map'}>
+        <div className='w-100 home-input-search d-flex flex-row align-items-center' type="text">
+        <img className='icon-search ms-3' src='/iconsearch.png' alt="img"></img>
+        <span className='ms-3 text-search'>Busca tu Guardian...</span>
+        </div>
+        </Link>
       </div>
+      
       <div className='d-flex flex-wrap gap-3 justify-content-center'>
       <Link className='noStyle' to={'/home/datein'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=''></img><span>{dateInCorrect()}</span></div></Link>
       <Link className='noStyle' to={'/home/dateout'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=""></img><span>{dateOutCorrect()}</span></div></Link>
       <Link className='noStyle' to={'/home/details'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/baggage.png' alt=""></img><span>{baggage!=="0"?baggage + " piezas":"Nº de piezas"}</span></div></Link>
-      <button className='home-input home-btn-search'>Buscar</button>
+      <button onClick={() => navigate('/map')} className='home-input home-btn-search'>Buscar</button>
     </div>
     </div>
 
-    <Link to={'/home/reserve'}><button className='btn btn-primary mt-3'>GO TO RESERVE(provisional)</button></Link>
+  
 
     <div className='news mt-5 ms-2'>
     <h2>Novedades</h2>
@@ -100,10 +107,10 @@ const HomePage = () => {
       </div>
 
       <div className='box-experience'>
-        <img src="/gijon.png" alt="img"></img>
+        <img src="/barcelona.png" alt="img"></img>
         <div className='ps-2 pe-2'>
-        <h4>Un pedacito de Italia en Gijón</h4>
-        <p>Sin lugar a duda es uno de los destinos gastronómicos  por execélncia de esta gran ciudad situada en el norte de España.</p>
+        <h4>Sumérgete en Barcelona</h4>
+        <p>Si estás dispuesto a aventurarte en el mundo del submarinismo y venir a sentir una vivencia insólita en L’Aquàrium.</p>
           <span>4,50</span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
