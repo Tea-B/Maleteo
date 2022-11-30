@@ -77,10 +77,10 @@ const SearchPage = () => {
     <>
     <MapContext.Provider value={{guardians, setGuardians, ubications, setUbications, search, setSearch, selected, setSelected}}>
 
-      <Header></Header>
+      <Header navigateTo={'/home'}></Header>
 
       <SearchBar setSearch={searchUbications}></SearchBar>
-
+    
       {search.length === 0 && <Maps></Maps>}
       {search.length > 0 && <Maps></Maps>}
       

@@ -16,9 +16,15 @@
 
 .atention{
     position: absolute;
-    bottom: 40%;
+    bottom: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     color:red;
+    width: 100%;
+    text-align: center;
 
+}
+
+.icon-search{
+    width: 25px;
 }

@@ -7,6 +7,7 @@ import { CalendarPicker } from '@mui/x-date-pickers/CalendarPicker';
 import { Link } from 'react-router-dom';
 import {contextDateIn} from '../../Context/DateInProvider';
 import { useEffect } from 'react';
+import Header from '../../Components/Header/Header';
 
 
 
@@ -18,14 +19,16 @@ export default function SubComponentsPickers() {
     if(myDateIn < new Date()){
       return (<span className='atention'>Selecciona una fecha correcta</span>)
     }else{
-      return (<Link to={'/home/dateout'}><button className='btn'>Continuar</button></Link>)
+      return (<Link to={'/home/dateout'}><button className='btn btn-outline-primary'>Continuar</button></Link>)
     }
   }
 
     useEffect(() =>{
         setDateIn(myDateIn)
     })
-  return (
+  return (<>
+  <Header navigateTo={'/home'}></Header>
+
     <div className='container d-flex flex-wrap justify-content-center pt-4'>
     <h1>Elige la fecha de depósito</h1>
     <div className=''>
@@ -38,8 +41,8 @@ export default function SubComponentsPickers() {
     </LocalizationProvider>
     </div>
     {dateCorrect()}
-    <Link to={'/home'}><button className='btn'>home(provisional)</button></Link>
+    
     
     </div>
-  );
+    </>);
 }

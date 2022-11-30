@@ -2,7 +2,8 @@
     height: 50px;
     border-radius: 6px;
     width: 25vh;
-    box-shadow: rgba(0, 0, 0, 0.301) 1px 1px 5px ;
+    box-shadow: rgba(0, 0, 0, 0.16) 1px 1px 5px ;
+    background-color: rgba(128, 128, 128, 0.038);
 }
 
 .home-input-search{
@@ -11,6 +12,8 @@
     border-radius: 6px;
     width: 25vw;
     box-shadow: rgba(0, 0, 0, 0.301) 1px 1px 5px ;
+    background-color: rgba(128, 128, 128, 0.038);
+
 }
 
 .home-input{
@@ -82,4 +85,13 @@ img{
 
 .icon{
     width: 19px;
+}
+
+.text-search{
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+}
+h2{
+    font-weight: 700;
 }

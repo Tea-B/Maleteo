@@ -23,11 +23,15 @@ const EditGuardian = () => {
       })
       let stringUser = getCookie('user');
       const user = JSON.parse(stringUser ? stringUser : '{}');
-      let ubication = await axios.get(process.env.REACT_APP_BACKEND + "ubications/getall")
+      let {"data":ubication} = await axios.get(process.env.REACT_APP_BACKEND + "ubications/getall")
       console.log(ubication);
       console.log(user);
-      let guardianUser = {ubicationsID: [ubication[ubication.length -1]], userID: user._id};
+      let lastUbication = ubication[ubication.length - 1];
+      let guardianUser = {ubicationsID: [lastUbication._id], userID: user._id};
+      console.log(guardianUser);
       axios.post(process.env.REACT_APP_BACKEND + "guardians/post", guardianUser );
+
+      navigate('/profile')
   }
 
   let getRoad = async (busca) => {

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { MapContext } from '../../SearchPage';
 
 import "./GuardianDetails.scss"
@@ -6,7 +7,7 @@ import "./GuardianDetails.scss"
 const GuardianDetails = () => {
 
   const { guardians, setGuardians, ubications, setUbications, search, setSearch, selected, setSelected } = useContext(MapContext);
-
+  console.log(guardians)
   const [ selectedUser, setSelectedUser ] = useState([]);
   const [ toggle, setToggle ] = useState(false);
 
@@ -17,7 +18,7 @@ const GuardianDetails = () => {
         guardian._id === selected.guardianID);
 
         setSelectedUser(filterUser);
-        console.log(selectedUser);
+        // console.log(selectedUser);
       };
   
       getData();
@@ -32,16 +33,16 @@ const GuardianDetails = () => {
 
   return (
     <div className={`ubication-details ${toggle ? 'ubication-details-active': 'ubication-details'}`}>
-      <button onClick={toggleDetails}>
+      <button className='btn-toggle' onClick={toggleDetails}>
         &#8645;
       </button>
       <div className='ubication-details-panel'>
         {
           selectedUser.map((data) => {
-            console.log(data)
+            {/* console.log(data) */}
 
             let { "0": ubicationDetails } = data.ubicationsID
-            console.log(ubicationDetails)
+            {/* console.log(ubicationDetails) */}
 
             return (
               <div className='details'>
@@ -50,11 +51,13 @@ const GuardianDetails = () => {
                 </div>
                 <div>
                   <ul className='details-user'>
-                    <li>Nombre casa: {ubicationDetails.name}</li>
-                    <li>Descripcion: {ubicationDetails.description}</li>
-                    <li>Nombre y Apellidos del guardian: {data.userID.name + " " + data.userID.surname}</li>
-                    <li>Email de contacto: {data.userID.email}</li>
+                    <li className='details-user-house-name'>{ubicationDetails.name}</li>
+                    <li className='details-user-guardian-name'>{data.userID.name + " " + data.userID.surname}</li>
+                    <li className='details-user-guardian-description'>{ubicationDetails.description}</li>
+                    <li className='details-user-guardian-email'>{data.userID.email}</li>
                   </ul>
+                <Link to={'/home/reserve'}><button className='btn-reserve-now'>Reservar Ahora</button></Link>
+
                 </div>
               </div>
             )

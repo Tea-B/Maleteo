@@ -1,30 +1,40 @@
 import React from 'react'
+import Footer from '../../Components/Footer/Footer'
 import './ChatPage.scss'
 
 const ChatPage = () => {
-  return (
-    <div className='container mt-5'>
-      <h1>Petición de reserva</h1>
 
-      <ul className='p-0 mt-3'>
-        <li className='d-flex flex-row justify-content-between align-items-center li-chat'>
-        <div className='info-chat d-flex flex-row justify-content-center align-items-center'>
-              <img className='img-chat me-3' src='/fenix@3x.png' alt='' />
-              <div className='d-flex flex-column'>
-              <h3>Nombre</h3>
-              <p>depósito</p>
-              <p>recogida</p>
-          </div>
-          </div>
-          <div className='d-flex flex-column'>
-            <button className='btn btn-primary'>Aceptar</button>
-            <button className='btn'>Declinar</button>
+  
+  return (
+    <>
+   
+    <div className='container'>
+
+    <h1 className='mt-5'>Mensajes</h1>
+       <h1 className='thanks'>¡Estamos trabajando para que puedas chatear con tus Guardianes! :)</h1>
+       {/* <h2></h2> */}
+      {/* <ul className='p-0 mt-4'>
+
+        <li className='d-flex flex-row align-items-center li-chat'>
+          <div> <img className='img-chat me-3' src='/fenix@3x.png' alt='' /></div>
+             
+            <div className='d-flex flex-column'>
+
+              <div className='d-flex align-items-center gap-2'>
+                <h3>Nombre</h3>
+                <span>Confirmada</span>
+              </div>
+              
+              <p className='m-0'>fecha de entrada</p>
+              <p className='m-0' >mensaje..</p>
           </div>
         </li>
 
 
-      </ul>
-    </div>
+      </ul> */}
+      </div>
+    <Footer></Footer>
+    </>
   )
 }
 

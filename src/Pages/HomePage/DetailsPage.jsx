@@ -2,7 +2,6 @@ import * as React from 'react';
 import './DetailsPage.scss'
 import ArrowRight from '../../svg/icon-arrow-right.svg';
 import { Link } from 'react-router-dom';
-
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -15,6 +14,7 @@ import { useEffect } from 'react';
 import { contextTimeOut } from '../../Context/TimeOutProvider';
 import { contextDateIn } from '../../Context/DateInProvider';
 import { contextDateOut } from '../../Context/DateOutProvider';
+import Header from '../../Components/Header/Header';
 
 
 export default function BasicTimePicker() {
@@ -52,6 +52,8 @@ useEffect(() =>{
 
   return (
     <>
+  <Header navigateTo={'/home/dateout'}></Header>
+    
     <div className='container d-flex flex-wrap justify-content-start'>
     
         <div className='d-flex mt-5'>

@@ -18,6 +18,7 @@ import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
 import ReservePage from './Pages/HomePage/ReservePage';
 import RatesPage from './Pages/RatesPage/RatesPage';
+import {ThanksPage} from './Pages/Thanks/ThanksPage';
 
 // import Geokeo from './Pages/positionstack/OpenGetData';
 // import OpenGetData from './Pages/positionstack/OpenGetData';
@@ -42,6 +43,7 @@ export const App = () => {
             {login && <Route path="/home/dateout" element={<DateOutPage></DateOutPage>} />}
             {login && <Route path="/home/details" element={<DetailsPage></DetailsPage>} />}
             {login && <Route path="/home/reserve" element={<ReservePage></ReservePage>} />}
+            {login && <Route path="/home/reserve/thanks" element={<ThanksPage></ThanksPage>} />}
             {login && <Route path="/profile" element={<ProfilePage></ProfilePage>} />}
             {login && <Route path="/editguardian" element={<EditGuardian></EditGuardian>} />}
             {login && <Route path="/chat" element={<ChatPage></ChatPage>} />}
