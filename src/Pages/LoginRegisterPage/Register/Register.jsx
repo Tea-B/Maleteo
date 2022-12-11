@@ -1,8 +1,8 @@
 import axios from "axios";
 import {useForm} from "react-hook-form";
 import "./Register.scss";
-import FacebookLogin from "react-facebook-login";
-import GoogleLogin from 'react-google-login';
+// import FacebookLogin from "react-facebook-login";
+// import GoogleLogin from 'react-google-login';
 import { Navigate } from "react-router-dom";
 
 
@@ -47,7 +47,7 @@ const RegisterPage = () => {
                 </div>
                 <div className="linkbtn">
                     <div>
-                        <FacebookLogin 
+                        {/* <FacebookLogin 
                             appId="1088597931155576"
                             autoLoad={false}
                             fields="name,email,picture"
@@ -55,10 +55,10 @@ const RegisterPage = () => {
                             callback={responseFacebook}
                             textButton = "Facebook"
                             icon="fa-facebook"
-                        />
+                        /> */}
                     </div>
                     <div className='googlebtn'>
-                        <GoogleLogin
+                        {/* <GoogleLogin
                             clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
                             //buttonText="Google"
                             render={renderProps => (
@@ -67,7 +67,7 @@ const RegisterPage = () => {
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
                             cookiePolicy={'single_host_origin'}
-                        />
+                        /> */}
                     </div>
                 </div>
                 <p className="sectext">o utiliza tu correo electrónico</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Maps from './Maps/Maps';
 
 import axios from 'axios';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import SearchBar from '../../Components/SearchBar/SearchBar';
+import ReservePage from '../HomePage/ReservePage';
 
 export const MapContext = React.createContext();
 
@@ -15,6 +16,8 @@ const SearchPage = () => {
   const [ubications, setUbications] = useState([]);
   const [search, setSearch] = useState([]);
   const [selected, setSelected] = useState([]);
+
+  
 
   useEffect (() => {
 
@@ -29,6 +32,7 @@ const SearchPage = () => {
           setUbications(mappedUbications);
           setSearch(mappedUbications);
           setSelected(mappedUbications[0]);
+          
       };
   
       getData();
@@ -76,7 +80,6 @@ const SearchPage = () => {
   return (
     <>
     <MapContext.Provider value={{guardians, setGuardians, ubications, setUbications, search, setSearch, selected, setSelected}}>
-
       <Header navigateTo={'/home'}></Header>
 
       <SearchBar setSearch={searchUbications}></SearchBar>

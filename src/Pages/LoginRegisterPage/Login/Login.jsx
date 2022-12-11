@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../Context/MyContext';
 import "./Login.scss";
-import FacebookLogin from "react-facebook-login";
-import GoogleLogin from 'react-google-login';
+// import FacebookLogin from "react-facebook-login";
+// import GoogleLogin from 'react-google-login';
 
 const LoginPage = () => {
   
@@ -46,7 +46,7 @@ const LoginPage = () => {
             </div>
             <div className='linkbtn'>
               <div>
-                <FacebookLogin 
+                {/* <FacebookLogin 
                     appId="1088597931155576"
                     autoLoad={false}
                     fields="name,email,picture"
@@ -54,10 +54,10 @@ const LoginPage = () => {
                     callback={responseFacebook}
                     textButton = "Facebook"
                     icon="fa-facebook"
-                  />
+                  /> */}
                 </div>
                 <div className='googlebtn'>
-                  <GoogleLogin
+                  {/* <GoogleLogin
                     clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
                     //buttonText="Google"
                     render={renderProps => (
@@ -66,7 +66,7 @@ const LoginPage = () => {
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
-                  />
+                  /> */}
                 </div>
             </div>
           <p className='sectext'>o utiliza tu correo electrónico</p>

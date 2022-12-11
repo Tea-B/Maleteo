@@ -6,10 +6,12 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import L from "leaflet";
 
 import GuardianDetails from './GuardianDetails/GuardianDetails';
+import { contextMap } from '../../../Context/MapProvider';
 
 const Maps = () => {
 
     const { guardians, setGuardians, ubications, setUbications, search, setSearch, selected, setSelected } = useContext(MapContext);
+    // const {map, setMap} = useContext(contextMap);
 
     const blueIcon = L.icon({
         iconUrl: '../../../../assets/images/blue-icon.png',
@@ -57,9 +59,9 @@ const Maps = () => {
                                 <Marker position={[ubication.latitude, ubication.longitude]} icon={redIcon}
                                 eventHandlers={{
                                     click: (e) => {
-                                        console.log('marker clicked', e)
+                                        // console.log('marker clicked', e)
                                         setSelected(ubication)
-                                        console.log(ubication)
+                                        // console.log(ubication)
                                     },
                                 }}>
                                     <Popup>

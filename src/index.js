@@ -8,9 +8,15 @@ import DateInProvider from './Context/DateInProvider';
 import TimeInProvider from './Context/TimeInProvider';
 import TimeOutProvider from './Context/TimeOutProvider';
 import DateOutProvider from './Context/DateOutProvider';
+import ReserveProvider from './Context/ReserveProvider';
+import MapProvider from './Context/MapProvider';
+import ConfirmationProvider from './Context/ConfirmationProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <ConfirmationProvider>
+  <MapProvider>
+  <ReserveProvider>
   <TimeOutProvider>
   <TimeInProvider>
   <BaggageProvider>
@@ -24,6 +30,9 @@ root.render(
   </BaggageProvider>
   </TimeInProvider>
   </TimeOutProvider>
+  </ReserveProvider>
+  </MapProvider>
+  </ConfirmationProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

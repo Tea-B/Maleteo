@@ -1,41 +1,118 @@
-import React from 'react'
-import Footer from '../../Components/Footer/Footer'
-import './ChatPage.scss'
+import "./ChatPage.scss";
+import io from "socket.io-client";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { contextReserve } from "../../Context/ReserveProvider";
+import { Avatar } from "@mui/material";
+import { animateScroll as scroll} from 'react-scroll'
+import Header from "../../Components/Header/Header";
+
+
+
+const socket = io.connect("http://localhost:3030");
 
 const ChatPage = () => {
-
+  const bottomRef = useRef(null)
+  const {reserve} = useContext(contextReserve)
+  console.log(reserve)
+  //Room State
+  const [room] = useState(reserve._id);
   
-  return (
-    <>
+  const myImg = reserve.userID.image
+  const userImg = reserve.guardianID.userID.image?reserve.guardianID.userID.image:"https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg";
+  console.log(userImg)
+
+  // Messages States
+  const [message, setMessage] = useState('');
+  // const [messageReceived, setMessageReceived] = useState('');
+  const [messages, setMessages] = useState([]);
+
+  const joinRoom = () => {
+    if (room !== "") {
+      socket.emit("join_room", room);
+      // console.log(room)
+    }
+  };
+  joinRoom()
+
+  const sendMessage = () => {
+    socket.emit("send_message", { message, room });
+    const newMessage = {
+      body: message,
+      from: "Me"
+
+    }
+    
+    setMessages([...messages, newMessage])
+    // console.log(messages)
+    
+  
+  };
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+    
+      const newMessage = {
+        body: data.message,
+        from: reserve.guardianID.userID.name
+      }
+      // console.log(messages)
+      setMessages([...messages, newMessage]);
+      scroll.scrollToBottom()
+      
+    });
+    
    
-    <div className='container'>
+  }, [socket, messages]);
 
-    <h1 className='mt-5'>Mensajes</h1>
-       <h1 className='thanks'>¡Estamos trabajando para que puedas chatear con tus Guardianes! :)</h1>
-       {/* <h2></h2> */}
-      {/* <ul className='p-0 mt-4'>
+  // console.log(messages)
 
-        <li className='d-flex flex-row align-items-center li-chat'>
-          <div> <img className='img-chat me-3' src='/fenix@3x.png' alt='' /></div>
-             
-            <div className='d-flex flex-column'>
+  useEffect(() => {
+    // 👇️ scroll to bottom every time messages change
+    bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+  }, [messages]);
 
-              <div className='d-flex align-items-center gap-2'>
-                <h3>Nombre</h3>
-                <span>Confirmada</span>
-              </div>
-              
-              <p className='m-0'>fecha de entrada</p>
-              <p className='m-0' >mensaje..</p>
-          </div>
-        </li>
+  const handleSubmit = (event) => {
+  
+    event.preventDefault();
+    setMessage("")
+    
+
+  }
+  
 
 
-      </ul> */}
+  return (<>
+  <Header navigateTo={'/chat'}></Header>
+    <div className="container">
+      
+      <h1>{reserve.guardianID.userID.name}</h1>
+
+      <div className="messages">
+      {messages.map(message =>
+      <div key={message.id} className={message.from==="Me"?"my-message":"guard-message"}>
+      <span>
+      <Avatar src={message.from==="Me"?myImg:userImg} />{message.from}: {message.body}
+      </span>
+      </div> )}
+
+      <div ref={bottomRef} />
       </div>
-    <Footer></Footer>
-    </>
-  )
+    </div>
+    
+
+    <form className="chat" onSubmit={handleSubmit}>
+    <input
+        className="chat-input"
+        placeholder="Escribe un mensaje..."
+        value={message}
+        onChange={(event) => {
+          setMessage(event.target.value);
+        }}
+      />
+      <button className="chat-btn me-4" onClick={() =>sendMessage()}>Enviar</button>
+      </form>
+    </>);
 }
 
 export default ChatPage
+

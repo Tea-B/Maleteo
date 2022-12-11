@@ -25,7 +25,7 @@ export const ThanksPage = () => {
         </p>
       </div>
       <div className="thanks-back__cross">
-        <button onClick={()=> navigate('/home')}>
+        <button onClick={()=> navigate('/chat')}>
           <img
             className="b-cross__image"
             src="/Assets/Images/cross-thanks-img.jpg"

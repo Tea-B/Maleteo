@@ -12,6 +12,7 @@ const ProfilePage = () => {
   const stringUser = getCookie('user');
   const user = JSON.parse(stringUser ? stringUser : '{}');
   const navigate = useNavigate()
+  console.log(user);
 
   const descLog = () => {
     deleteCookie("token");

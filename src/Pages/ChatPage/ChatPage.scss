@@ -16,3 +16,55 @@
     margin-top: 100px;
     font-weight: 100;
 }
+
+.chat{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    box-shadow: #f68f24 0px 0px 4px 0px ;
+    
+
+    &-input{
+        width: 80%;
+        border: none;
+        outline: none;
+        margin-left: 30px;
+        // text-align: center;
+    }
+
+    
+}
+
+.messages{
+width: 100%;
+display: flex;
+flex-direction: column;
+//  align-items: center;
+//  max-width: 335px;
+// //  flex-wrap: wrap;
+overflow-y:auto;
+height: 79vh;
+white-space: normal;
+}
+
+.my-message{
+    background-color: #f68f24;
+    color:white;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 7px;
+    max-width: 300px;
+    white-space: normal;
+    // display: flex;
+    
+    // max-width: 335px;
+  
+
+}
+
+.guard-message{
+    background-color: rgb(251, 251, 251);
+    white-space: normal;
+}

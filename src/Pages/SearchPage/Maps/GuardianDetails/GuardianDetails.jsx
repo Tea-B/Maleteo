@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { contextMap } from '../../../../Context/MapProvider';
 import { MapContext } from '../../SearchPage';
 
 import "./GuardianDetails.scss"
@@ -7,9 +8,12 @@ import "./GuardianDetails.scss"
 const GuardianDetails = () => {
 
   const { guardians, setGuardians, ubications, setUbications, search, setSearch, selected, setSelected } = useContext(MapContext);
-  console.log(guardians)
+  // console.log(guardians)
   const [ selectedUser, setSelectedUser ] = useState([]);
   const [ toggle, setToggle ] = useState(false);
+
+  const {map, setMap} = useContext(contextMap);
+  
 
   useEffect (() => {
 
@@ -20,10 +24,11 @@ const GuardianDetails = () => {
         setSelectedUser(filterUser);
         // console.log(selectedUser);
       };
-  
       getData();
+      setMap(selected)
 
   }, [selected]);
+  console.log(selected);
 
   const toggleDetails = () => {
     setToggle(!toggle);

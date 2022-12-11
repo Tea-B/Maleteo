@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, BrowserRouter as Router, Link } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router} from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
 import EditGuardian from './Pages/ProfilePage/EditGuardian/EditGuardian';
 import SearchPage from './Pages/SearchPage/SearchPage';
@@ -17,16 +17,11 @@ import DateInPage from './Pages/HomePage/DateInPage';
 import DateOutPage from './Pages/HomePage/DateOutPage';
 import DetailsPage from './Pages/HomePage/DetailsPage';
 import ReservePage from './Pages/HomePage/ReservePage';
-<<<<<<< HEAD
-import RatesPage  from './Pages/RatesPage/RatesPage';
-=======
 import RatesPage from './Pages/RatesPage/RatesPage';
 import {ThanksPage} from './Pages/Thanks/ThanksPage';
+import ChatListPage from './Pages/ChatListPage/ChatListPage';
+import Confirmation from './Pages/HomePage/Resume/Confirmation';
 
-// import Geokeo from './Pages/positionstack/OpenGetData';
-// import OpenGetData from './Pages/positionstack/OpenGetData';
-// import { PositionstackPage } from './Pages/positionstack/PositionstackPage';
->>>>>>> backup3
 
 export const App = () => {
 
@@ -47,10 +42,12 @@ export const App = () => {
             {login && <Route path="/home/dateout" element={<DateOutPage></DateOutPage>} />}
             {login && <Route path="/home/details" element={<DetailsPage></DetailsPage>} />}
             {login && <Route path="/home/reserve" element={<ReservePage></ReservePage>} />}
+            {login && <Route path="/home/reserve/confirmation" element={<Confirmation></Confirmation>} />}
             {login && <Route path="/home/reserve/thanks" element={<ThanksPage></ThanksPage>} />}
             {login && <Route path="/profile" element={<ProfilePage></ProfilePage>} />}
             {login && <Route path="/editguardian" element={<EditGuardian></EditGuardian>} />}
-            {login && <Route path="/chat" element={<ChatPage></ChatPage>} />}
+            {login && <Route path="/chat/:id" element={<ChatPage></ChatPage>} />}
+            {login && <Route path="/chat/" element={<ChatListPage />} />}
             <Route path="/rates" element={<RatesPage></RatesPage>} />
         
         </Routes>
