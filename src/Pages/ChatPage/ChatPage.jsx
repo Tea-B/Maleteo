@@ -8,7 +8,8 @@ import Header from "../../Components/Header/Header";
 
 
 
-const socket = io.connect("http://localhost:3030");
+
+const socket = io.connect(process.env.REACT_APP_BACKEND);
 
 const ChatPage = () => {
   const bottomRef = useRef(null)

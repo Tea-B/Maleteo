@@ -22,7 +22,7 @@ const SearchPage = () => {
   useEffect (() => {
 
       const getData = async () => {
-          const { data } = await axios.get("http://localhost:3030/guardians/getall");
+          const { data } = await axios.get(process.env.REACT_APP_BACKEND + "guardians/getall");
 
           console.log(data);
           setGuardians(data);

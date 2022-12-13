@@ -22,7 +22,7 @@ const ChatListPage = () => {
 
     useEffect(() => {
         const getData = async () => {
-        const {data} = await axios.get(`http://localhost:3030/users/get/${user._id}`)
+        const {data} = await axios.get(process.env.REACT_APP_BACKEND + `users/get/${user._id}`)
             setReserves(data)
            console.log(data) 
         }
