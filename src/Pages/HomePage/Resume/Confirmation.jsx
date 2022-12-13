@@ -67,7 +67,7 @@ const Confirmation = () => {
     })
     
     
-//     navigate('/home/reserve/thanks')
+    navigate('/home/reserve/thanks')
 }
 
 useEffect(() => {
@@ -89,7 +89,7 @@ useEffect(() => {
       
     </div>
     <button className='btn-reserve' onClick={()=>putUser()}>Confirmar reserva</button>
-    <button className='btn' onClick={()=>console.log(confirmation)}>console log</button>
+    {/* <button className='btn' onClick={()=>console.log(confirmation)}>console log</button> */}
     </>)
 }
 
