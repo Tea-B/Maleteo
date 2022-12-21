@@ -11,8 +11,8 @@ export const Start2 = () => {
         <div className='b-card__container'>
             <img className='b-hero__image' src='./Assets/Images/world-icon-start2.png' alt=''></img>
             <h3 className='b-starts__title'>El mismo precio en cualquier parte</h3>
-            <p className='b-starts__paragraph' >Dispondrás de un precio fijo estés donde estés sin umportar el tamaño o el peso</p>
-            <button onClick={() => navigate('/connect')} className='b-continue__button'>Empezar Ya  👉🏽</button>
+            <p className='b__paragraph' >Dispondrás de un precio fijo estés donde estés sin importar el tamaño o el peso.</p>
+            <button onClick={() => navigate('/login')} className='b-continue__button'>Empieza Ya 👉🏽</button>
             <p onClick={() => navigate('/rates')} className='b-link-paragraph'>Consulta los precios</p>
         </div>
     </main>

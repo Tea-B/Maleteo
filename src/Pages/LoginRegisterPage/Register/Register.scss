@@ -1,11 +1,13 @@
 .center{
-    width: 330px;
-    position: relative;
-    left: 45px;
+    width: 100%;
+    display: flex;
+
+    // position: relative;
+    // left: 45px;
 }
 .form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    place-content: center;
 }
 
 .divtitle2 {
@@ -26,4 +28,34 @@
 .textspan {
     font-size: 11px;
     margin-left: 5px;
+}
+
+.bigdiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.register-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 315px ;
+    max-width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    gap: 20px;
+    box-shadow: 0px 0px 20px -10px black;
+    margin-inline: 20px;
+}
+
+.form-class{
+    min-width: 295px;
+    max-width: 420px;
+    padding: 20px;
 }

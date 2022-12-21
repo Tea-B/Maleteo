@@ -21,6 +21,8 @@ import RatesPage from './Pages/RatesPage/RatesPage';
 import {ThanksPage} from './Pages/Thanks/ThanksPage';
 import ChatListPage from './Pages/ChatListPage/ChatListPage';
 import Confirmation from './Pages/HomePage/Resume/Confirmation';
+import EditUser from './Pages/ProfilePage/EditUser/EditUser';
+// import StartModal from './Pages/StartModal/StartModal';
 
 
 export const App = () => {
@@ -35,7 +37,8 @@ export const App = () => {
         <Routes>
             <Route exact path="/" element={<StartPage></StartPage>} />
             <Route path="/secondstart" element={<Start2></Start2>} />
-            <Route path="/connect" element={<LoginRegisterPage></LoginRegisterPage>} />
+            {/* <Route path="/start" element={<StartModal></StartModal>} /> */}
+            <Route path="/login" element={<LoginRegisterPage></LoginRegisterPage>} />
             {login && <Route path="/home" element={<HomePage></HomePage>} />}
             {login && <Route path="/map" element={<SearchPage></SearchPage>} />}
             {login && <Route path="/home/datein" element={<DateInPage></DateInPage>} />}
@@ -46,6 +49,7 @@ export const App = () => {
             {login && <Route path="/home/reserve/thanks" element={<ThanksPage></ThanksPage>} />}
             {login && <Route path="/profile" element={<ProfilePage></ProfilePage>} />}
             {login && <Route path="/editguardian" element={<EditGuardian></EditGuardian>} />}
+            {login && <Route path="/edituser" element={<EditUser></EditUser>} />}
             {login && <Route path="/chat/:id" element={<ChatPage></ChatPage>} />}
             {login && <Route path="/chat/" element={<ChatListPage />} />}
             <Route path="/rates" element={<RatesPage></RatesPage>} />

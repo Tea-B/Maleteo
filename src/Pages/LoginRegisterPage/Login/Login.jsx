@@ -38,14 +38,12 @@ const LoginPage = () => {
     }
 
 
-  return (
-    <div>
-        <div className='textdiv'>
-          <div className='divtitle'>
-            <h2>Iniciar sesión ahora</h2>
-            </div>
-            <div className='linkbtn'>
-              <div>
+  return (<>
+        <div className='login-container'>
+         <h2 className='text-center fs-3'>Iniciar sesión</h2>
+          
+            {/* <div className='linkbtn'> */}
+              {/* <div> */}
                 {/* <FacebookLogin 
                     appId="1088597931155576"
                     autoLoad={false}
@@ -55,8 +53,8 @@ const LoginPage = () => {
                     textButton = "Facebook"
                     icon="fa-facebook"
                   /> */}
-                </div>
-                <div className='googlebtn'>
+                {/* </div> */}
+                {/* <div className='googlebtn'> */}
                   {/* <GoogleLogin
                     clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
                     //buttonText="Google"
@@ -67,23 +65,22 @@ const LoginPage = () => {
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
                   /> */}
-                </div>
-            </div>
-          <p className='sectext'>o utiliza tu correo electrónico</p>
-        </div>
-        <div className='centerlogin'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='formlogin'>
-              <label className='label' htmlFor='email2'>Dirección de correo electrónico</label>
+                {/* </div> */}
+            {/* </div> */}
+          {/* <p className='sectext'>o utiliza tu correo electrónico</p> */}
+          <form className='d-flex flex-column justify-content-center align-items-center gap-3 form-login' onSubmit={handleSubmit(onSubmit)}>
+          {/* <div className='formlogin'> */}
+              <label className='label' htmlFor='email2'>Dirección de correo electrónico
                 <input className='logininput' type="email" id='email2' {...register("email", {required:true})}/>
-              <label className='label' htmlFor='password2'>Contraseña</label>
+                </label>
+              <label className='label' htmlFor='password2'>Contraseña
                 <input className='logininput' type="password" id='password2' {...register("password", {required:true})}/>
+                </label>
+              {/* </div> */}
               <button className='loginbtn'>Inicia sesión</button>
-              </div>
           </form>
         </div>
-    </div>
-  )
+        </> )
 }
 
 export default LoginPage;

@@ -40,6 +40,7 @@ const ChatListPage = () => {
     
   return (
     <>
+{!reserves.reservations?"No hay chats que mostrar":
 
         <div className="container">
         <h1 >Lista de Guardianes</h1>
@@ -53,6 +54,7 @@ const ChatListPage = () => {
 
         </ul>
         </div>
+        }
 
         <Footer></Footer>
     </>

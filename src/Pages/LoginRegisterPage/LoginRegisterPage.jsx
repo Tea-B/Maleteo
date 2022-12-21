@@ -8,21 +8,21 @@ const LoginRegisterpage = () => {
 
     const [showLogin, setShowLogin] = useState(true);
 
-    return(
-        <div>
-            <Header navigateTo={'/secondstart'}></Header>
-            <div className="bigdiv">
-                <div className="btndiv2">
-                    <button className="btn-login" onClick={() => setShowLogin(true)}>Iniciar sesión</button>
+    return(<>
+    
+        <div className="b-main__starts flex-column">
+        <div className="btndiv2 gap-4">
+                    <button id="login-btn" className="btn-login" onClick={() => setShowLogin(true)}>Iniciar sesión</button>
                     <button className="btn-login" onClick={() => setShowLogin(false)}>Regístrate</button>
                 </div>
-                    {showLogin ?
+
+            <Header navigateTo={'/secondstart'}></Header>
+            {showLogin ?
                     (<Login></Login>) :
                     (<RegisterPage></RegisterPage>)
                     }
-            </div>
         </div>
-    )
+    </>)
 }
 
 export default LoginRegisterpage;

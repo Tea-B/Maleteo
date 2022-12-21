@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import { MyContext } from '../../Context/MyContext';
@@ -6,6 +6,7 @@ import { deleteCookie } from '../../utils/deleteCookie';
 import { getCookie } from '../../utils/getCookie';
 import "./ProfilePage.scss";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProfilePage = () => {
   const {login, setLogin} = useContext(MyContext);
@@ -13,14 +14,26 @@ const ProfilePage = () => {
   const user = JSON.parse(stringUser ? stringUser : '{}');
   const navigate = useNavigate()
   console.log(user);
+  
+  const [dataUser, setDataUser] = useState({})
 
   const descLog = () => {
     deleteCookie("token");
     deleteCookie("user");
     setLogin(false);
-    navigate('/connect')
+    navigate('/login')
 
   }
+
+  useEffect(() => {
+    const getDataUser = async () => {
+      await axios.get(process.env.REACT_APP_BACKEND + `users/get/${user._id}`)
+      .then((res) => {
+        setDataUser(res.data)
+      })
+    }
+    getDataUser()
+  },[])
 
 
   return (<>
@@ -28,12 +41,12 @@ const ProfilePage = () => {
       <div className='d-flex justify-content-between mt-5'>
 
         <div className='prof'>
-          <h1>{user.name}</h1>
-          <p className='subtitle'>Puedes ver y editar tu perfil</p>
+          <h1>{dataUser.name}</h1>
+          <p onClick={()=>navigate('/edituser')} className='subtitle'>Puedes ver y editar tu perfil</p>
         </div>
 
         <div className='photo'>
-          <img className='profimg' src={user.image} alt=''></img>
+          <img className='profimg' src={dataUser.image} alt=''></img>
         </div>
 
       </div>

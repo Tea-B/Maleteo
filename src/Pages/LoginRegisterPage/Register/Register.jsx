@@ -3,97 +3,109 @@ import {useForm} from "react-hook-form";
 import "./Register.scss";
 // import FacebookLogin from "react-facebook-login";
 // import GoogleLogin from 'react-google-login';
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const RegisterPage = () => {
-    const {register, handleSubmit} = useForm();
-    
-    const responseFacebook = (response) => {
-        console.log(response);
-      }
-    
-      const componentClicked = () => {
-        console.log("CLICK");
-      }
+    const {register, handleSubmit, formState:{errors}} = useForm();
+    const navigate = useNavigate()
 
-    const responseGoogle = (response) => {
-          console.log(response);
-      }
+    const goToLogin = () => {
+        document.getElementById("login-btn").click();
+    }
 
     const onSubmit = (data) =>{
         console.log(data);
-        const born = new Date(data.birthdate);
+        const born = new Date(data.date);
         //console.log(born.getFullYear());
         const now = new Date();
         //console.log(now.getFullYear());
         let age = now.getFullYear() - born.getFullYear();
-        if(age >= 18){
+        if(age >= 18)
+        {
             axios.post(process.env.REACT_APP_BACKEND + "users/register", data).then(res => {
                 console.log("Usuario creado");
-                Navigate("/home");
+                goToLogin()
             })
         } else {
-            console.log("Edad incorrecta, debes ser mayor de edad");
-        }
-    
+            
+        }       
     }
+    console.log(errors)
+
+    const messages = {
+        req: "Este campo es obligatorio",
+        name: "El formato introducido no es el correcto",
+        email: "Debes introducir una dirección correcta",
+        password: "Tu contraseña debe tener al menos 8 carácteres: Mayus, un número, y un caracter especial",
+        date: "Debes ser mayor de edad"
+       };
+
+    const patterns = { 
+        name: /^[A-Za-z]+$/i ,
+        email:/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+        password:/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+    };
+
 
     return(
-        <div>
-            <div className="textdiv">
-                <div className="divtitle2">
-                    <h2>Únete a Maleteo y disfruta de sus ventajas</h2>
-                </div>
-                <div className="linkbtn">
-                    <div>
-                        {/* <FacebookLogin 
-                            appId="1088597931155576"
-                            autoLoad={false}
-                            fields="name,email,picture"
-                            onClick={componentClicked}
-                            callback={responseFacebook}
-                            textButton = "Facebook"
-                            icon="fa-facebook"
-                        /> */}
-                    </div>
-                    <div className='googlebtn'>
-                        {/* <GoogleLogin
-                            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                            //buttonText="Google"
-                            render={renderProps => (
-                            <button className='googlebtn' onClick={renderProps.onClick} disabled={renderProps.disabled}></button>
-                            )}
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                        /> */}
-                    </div>
-                </div>
-                <p className="sectext">o utiliza tu correo electrónico</p>
-                </div>
-                <div className="center">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form">
+            <div className="register-container">
+                    <h2 className="text-center">Únete a Maleteo y disfruta de sus ventajas</h2>
+                
+                    <form className="d-flex flex-column justify-content-center align-items-center form-class gap-2" onSubmit={handleSubmit(onSubmit)}>
                         <label className='label' htmlFor="email">Dirección de correo electrónico</label>
-                            <input className='logininput' id="email" type="email" {...register("email", {required:true})}/>
+                        <input className='logininput' id="email" type="email" {...register("email", {
+                            required: messages.req,
+                            pattern:{
+                                value: patterns.email,
+                                message: messages.email
+                            }
+                            })}/>
+                        {errors.mail && <p>{errors.mail.message}</p>}
+
                         <label className='label' htmlFor="name">Nombre</label>
-                            <input className='logininput' id="name" type="text" {...register("name",{required:true})}/>
+                            <input className='logininput' id="name" type="text" {...register("name",{
+                                required:messages.req,
+                                pattern:{
+                                    value:patterns.name,
+                                    message: messages.name
+                                }
+                                })}/>
+                        {errors.name && <p>{errors.name.message}</p>}
+
                         <label className='label' htmlFor="surname">Apellido</label>
-                            <input className='logininput' id="surname" type="text" {...register("surname",{required:true})}/>
+                            <input className='logininput' id="surname" type="text" {...register("surname",{
+                                required:messages.req,
+                                pattern:{
+                                    value: patterns.name,
+                                    message: messages.name
+                                }
+                                })}/>
+                        {errors.surname && <p>{errors.surname.message}</p>}
+                        
+
                         <label className='label' htmlFor="password">Contraseña</label>
-                            <input className='logininput' id="password" type="password" {...register("password",{required:true})}/>
-                        <label className='label' htmlFor="birthdate">Fecha de nacimiento</label>
-                            <input className='logininput' id="birthdate" type="date" placeholder="Para registrarte tendrás que ser mayor de edad. Los usuarios no veran tu fecha de cumpleaños" {...register("birthdate",{required:true})}/>
-                        <div className="check">
-                            <input className="checkbox" type="checkbox"></input>
-                            <span className="textspan">Quiero recibir consejos sobre como gestionar mi equipaje, ofertas, novedades y otros correos electrónicos de Maleteo</span>
-                        </div>
-                            <button className='loginbtn '>Registrarse</button>
-                        </div>
+                            <input className='logininput' id="password" type="password" {...register("password",{
+                                required:messages.req,
+                                pattern:{
+                                    value: patterns.password,
+                                    message: messages.password
+                                }
+                                })}/>
+                        {errors.password && <p>{errors.password.message}</p>}
+
+                        <label className='label' htmlFor="birthdate">Fecha de nacimiento (debes ser +18)</label>
+                            <input className='logininput' id="birthdate" type="date" {...register("date",{
+                                required:messages.req,
+                                })}/>
+                        {errors.date && <p>{errors.date.message}</p>}
+                        
+                        
+
+                        <button className='loginbtn'>Registrarse</button>
                     </form>
             </div>
-        </div>
+     
     )
 }
 

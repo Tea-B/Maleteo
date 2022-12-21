@@ -1,47 +1,53 @@
 .centerlogin{
-    width: 330px;
-    position: relative;
-    top: 65px;
-    left: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.formlogin {
-    display: flex;
-    flex-direction: column;
+.form-login {
+    padding: 10px;
 }
 
 .logininput {
     border: none;
     border-bottom: 1px solid #cecece;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .label {
     font-size: 17px;
     color: #909090;
     font-weight: 500;
+    width: 100%;
+    text-align: start;
 }
 
 .loginbtn {
-    position: relative;
-    top: 45px;
     background-color: #fbfbfb;
     border: transparent;
     outline: none;
     border-radius: 5px;
-    margin-left: 20px;
-    width: 75%;
     height: 45px;
     font-weight: 600;
     background-color: #f68f24;
-    color: #fff
+    color: #fff;
+    padding: 5px;
 }
 
-.textdiv{
-    position:relative;
-    top: 15px;
-    left: 50px;
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 300px;
+    background-color:white;
+    border-radius: 6px;
+    height: 370px;
+    gap: 50px;
+    box-shadow: 0px 0px 20px -10px black
 }
 
 .linkbtn {
@@ -69,12 +75,12 @@
     margin-top: 30px;
 }
 
-.googlebtn {
-    position: relative;
-    right: 10px;
-    width: 150px;
-    height: 48px;
-    background-image: url("../../../../public/Assets/Images/Captura\ de\ pantalla\ 2022-11-27\ 154421.jpg");
-    background-size: cover;
-    border-radius: 5%;
-}
+// .googlebtn {
+//     position: relative;
+//     right: 10px;
+//     width: 150px;
+//     height: 48px;
+//     background-image: url("../../../../public/Assets/Images/Captura\ de\ pantalla\ 2022-11-27\ 154421.jpg");
+//     background-size: cover;
+//     border-radius: 5%;
+// }

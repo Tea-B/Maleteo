@@ -50,20 +50,20 @@ const HomePage = () => {
     <>
     <div className='mt-5 d-flex flex-column align-items-center'>
 
-    <div className='d-flex flex-wrap gap-3 mt-2 container'>
+    <div className='d-flex flex-column flex-wrap gap-3 mt-2 container justify-content-center'>
     <h2>Encuentra tu guardián</h2>
     <div className='w-100'><Link className='text-search' to={'/map'}>
-        <div className='w-100 home-input-search d-flex flex-row align-items-center' type="text">
+        <div className='home-input-search d-flex flex-row align-items-center w-100' type="text">
         <img className='icon-search ms-3' src='/iconsearch.png' alt="img"></img>
         <span className='ms-3 text-search'>Busca tu Guardian...</span>
         </div>
         </Link>
       </div>
       
-      <div className='d-flex flex-wrap gap-3 justify-content-center'>
-      <Link className='noStyle' to={'/home/datein'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=''></img><span>{dateInCorrect()}</span></div></Link>
-      <Link className='noStyle' to={'/home/dateout'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/calendar.png' alt=""></img><span>{dateOutCorrect()}</span></div></Link>
-      <Link className='noStyle' to={'/home/details'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-4' src='/baggage.png' alt=""></img><span>{baggage!=="0"?baggage + " piezas":"Nº de piezas"}</span></div></Link>
+      <div className='d-flex gap-3 flex-wrap justify-content-center input-container'>
+      <Link className='noStyle' to={'/home/datein'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-1' src='/calendar.png' alt=''></img><span>{dateInCorrect()}</span></div></Link>
+      <Link className='noStyle' to={'/home/dateout'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-1' src='/calendar.png' alt=""></img><span>{dateOutCorrect()}</span></div></Link>
+      <Link className='noStyle' to={'/home/details'}><div className='home-input d-flex justify-content-start align-items-center'><img className='icon ms-3 me-1' src='/baggage.png' alt=""></img><span>{baggage!=="0"?baggage + " piezas":"Nº de piezas"}</span></div></Link>
       <button onClick={() => navigate('/map')} className='home-input home-btn-search'>Buscar</button>
     </div>
     </div>
