@@ -5,11 +5,15 @@ import { contextReserve } from "../../Context/ReserveProvider";
 import { Avatar } from "@mui/material";
 import { animateScroll as scroll} from 'react-scroll'
 import Header from "../../Components/Header/Header";
+import { getCookie } from "../../utils/getCookie";
 
 
 
 
 const socket = io.connect(process.env.REACT_APP_BACKEND);
+
+const stringUser = getCookie('user');
+  const user = JSON.parse(stringUser ? stringUser : '{}');
 
 const ChatPage = () => {
   const bottomRef = useRef(null)
@@ -36,12 +40,13 @@ const ChatPage = () => {
   joinRoom()
 
   const sendMessage = () => {
-    socket.emit("send_message", { message, room });
     const newMessage = {
       body: message,
-      from: reserve.userID.name
+      from: user._id,
+      room: room
 
     }
+    socket.emit("send_message", newMessage );
     
     setMessages([...messages, newMessage])
     scroll.scrollToBottom()
@@ -55,7 +60,7 @@ const ChatPage = () => {
     
       const newMessage = {
         body: data.message,
-        from: reserve.guardianID.userID.name
+        from: "another user"
       }
       // console.log(messages)
       setMessages([...messages, newMessage]);
@@ -95,7 +100,7 @@ const ChatPage = () => {
       {messages.map(message =>
       <div key={message.id} className={message.from==="me"?"my-message":"guard-message"}>
       <span>
-      <Avatar src={message.from===reserve.userID.name?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
+      <Avatar src={message.from==="me"?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
       </span>
       </div> )}
 
