@@ -12,19 +12,20 @@ import { getCookie } from "../../utils/getCookie";
 
 const socket = io.connect(process.env.REACT_APP_BACKEND);
 
-const stringUser = getCookie('user');
-  const user = JSON.parse(stringUser ? stringUser : '{}');
+
 
 const ChatPage = () => {
+
+  const stringUser = getCookie('user');
+  const user = JSON.parse(stringUser ? stringUser : '{}');
+  console.log(user)
+
   const bottomRef = useRef(null)
   const {reserve} = useContext(contextReserve)
   console.log(reserve)
   //Room State
   const [room] = useState(reserve._id);
   
-  const myImg = reserve.userID.image
-  const userImg = reserve.guardianID.userID.image?reserve.guardianID.userID.image:"https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg";
-  console.log(userImg)
 
   // Messages States
   const [message, setMessage] = useState('');
@@ -40,14 +41,13 @@ const ChatPage = () => {
   joinRoom()
 
   const sendMessage = () => {
+    
+    socket.emit("send_message", {message, room} );
     const newMessage = {
       body: message,
-      from: user._id,
-      room: room
+      from: user._id
 
     }
-    socket.emit("send_message", {message, user, room} );
-    
     setMessages([...messages, newMessage])
     scroll.scrollToBottom()
     // console.log(messages)
@@ -89,6 +89,7 @@ const ChatPage = () => {
   }
   
 
+const myImg = user._id === reserve.userID._id ? reserve.userID.image : reserve.guardianID.userID.image
 
   return (<>
   <Header navigateTo={'/chat'}></Header>
@@ -100,7 +101,7 @@ const ChatPage = () => {
       {messages.map(message =>
       <div key={message.id} className={message.from==="me"?"my-message":"guard-message"}>
       <span>
-      <Avatar src={message.from==="me"?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
+      <Avatar src={user._id === reserve.userID._id ? reserve.userID.image : reserve.guardianID.userID.image} />{message.from}: {message.body}
       </span>
       </div> )}
 
