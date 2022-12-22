@@ -46,7 +46,7 @@ const ChatPage = () => {
       room: room
 
     }
-    socket.emit("send_message", newMessage );
+    socket.emit("send_message", {message, user, room} );
     
     setMessages([...messages, newMessage])
     scroll.scrollToBottom()
