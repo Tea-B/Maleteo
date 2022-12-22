@@ -9,6 +9,7 @@ const LoginRegisterpage = () => {
     const [showLogin, setShowLogin] = useState(true);
 
     return(<>
+            <Header navigateTo={'/secondstart'}></Header>
     
         <div className="b-main__starts flex-column">
         <div className="btndiv2 gap-4">
@@ -16,7 +17,6 @@ const LoginRegisterpage = () => {
                     <button className="btn-login" onClick={() => setShowLogin(false)}>Regístrate</button>
                 </div>
 
-            <Header navigateTo={'/secondstart'}></Header>
             {showLogin ?
                     (<Login></Login>) :
                     (<RegisterPage></RegisterPage>)
