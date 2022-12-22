@@ -39,7 +39,7 @@ const ChatPage = () => {
     socket.emit("send_message", { message, room });
     const newMessage = {
       body: message,
-      from: reserve.userID.name
+      from: "me"
 
     }
     
@@ -59,9 +59,11 @@ const ChatPage = () => {
       }
       // console.log(messages)
       setMessages([...messages, newMessage]);
-      scroll.scrollToBottom()
+      console.log(data)
       
     });
+    scroll.scrollToBottom()
+
     
    
   }, [socket, messages]);
@@ -91,9 +93,9 @@ const ChatPage = () => {
 
       <div className="messages">
       {messages.map(message =>
-      <div key={message.id} className={message.from==="Me"?"my-message":"guard-message"}>
+      <div key={message.id} className={message.from==="me"?"my-message":"guard-message"}>
       <span>
-      <Avatar src={message.from===reserve.userID.name?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
+      <Avatar src={message.from==="me"?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
       </span>
       </div> )}
 
