@@ -19,7 +19,7 @@ const ChatPage = () => {
   const [room] = useState(reserve._id);
   
   const myImg = reserve.userID.image
-  const userImg = reserve.guardianID.userID.image
+  const userImg = reserve.guardianID.userID.image?reserve.guardianID.userID.image:"https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg";
   console.log(userImg)
 
   // Messages States
@@ -44,6 +44,7 @@ const ChatPage = () => {
     }
     
     setMessages([...messages, newMessage])
+    scroll.scrollToBottom()
     // console.log(messages)
     
   
@@ -90,7 +91,7 @@ const ChatPage = () => {
 
       <div className="messages">
       {messages.map(message =>
-      <div key={message.id} className={message.from===reserve.userID.name?"my-message":"guard-message"}>
+      <div key={message.id} className={message.from==="Me"?"my-message":"guard-message"}>
       <span>
       <Avatar src={message.from===reserve.userID.name?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
       </span>
