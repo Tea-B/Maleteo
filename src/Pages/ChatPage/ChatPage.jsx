@@ -39,7 +39,7 @@ const ChatPage = () => {
     socket.emit("send_message", { message, room });
     const newMessage = {
       body: message,
-      from: "me"
+      from: reserve.userID.name
 
     }
     
@@ -95,7 +95,7 @@ const ChatPage = () => {
       {messages.map(message =>
       <div key={message.id} className={message.from==="me"?"my-message":"guard-message"}>
       <span>
-      <Avatar src={message.from==="me"?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
+      <Avatar src={message.from===reserve.userID.name?reserve.userID.image:reserve.guardianID.userID.image} />{message.from}: {message.body}
       </span>
       </div> )}
 
