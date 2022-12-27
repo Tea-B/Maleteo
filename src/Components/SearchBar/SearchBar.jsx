@@ -10,7 +10,6 @@ const SearchBar = ({setSearch}) => {
 
   return (
     <div className="b__searcher">
-        <img src="./assets/images/searcher-location-home.png" alt=""></img>
         <input
         placeholder="¿Donde te encuentras? Madrid, Barcelona"
         className="b-searcher__location"
