@@ -27,9 +27,8 @@ export default function SubComponentsPickers() {
         setDateIn(myDateIn)
     })
   return (<>
-  <Header navigateTo={'/home'}></Header>
 
-    <div className='container d-flex flex-wrap justify-content-center pt-4'>
+    <div className='container d-flex flex-wrap justify-content-center pt-4 mt-4'>
     <h1>Elige la fecha de depósito</h1>
     <div className=''>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -44,5 +43,7 @@ export default function SubComponentsPickers() {
     
     
     </div>
+  <Header navigateTo={'/home'}></Header>
+
     </>);
 }

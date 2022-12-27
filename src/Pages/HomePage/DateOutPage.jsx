@@ -28,7 +28,7 @@ export default function SubComponentsPickers() {
 
   return (<>
   <Header navigateTo={'/home/datein'}></Header>
-    <div className='container d-flex flex-wrap justify-content-center pt-4'>
+    <div className='container d-flex flex-wrap justify-content-center pt-4 mt-4'>
     <h1>Elige la fecha de retirada</h1>
     <div className=''>
     <LocalizationProvider dateAdapter={AdapterDayjs}>

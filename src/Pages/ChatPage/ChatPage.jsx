@@ -95,9 +95,9 @@ const ChatPage = () => {
   return (<>
   <Header navigateTo={'/chat'}></Header>
 
-    <div className="container">
+    <div className="container mt-5">
       
-      <h1>{reserve.guardianID.userID.name}</h1>
+      <h1 className="name-chat">{reserve.guardianID.userID.name}</h1>
 
       <div className="messages">
       {messages.map(message =>
