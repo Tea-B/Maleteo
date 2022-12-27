@@ -5,9 +5,10 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import Header from '../../../Components/Header/Header'
 import { getCookie } from '../../../utils/getCookie'
- 
+import { useNavigate } from 'react-router-dom'
 
 const EditUser = () => {
+  const navigate = useNavigate()
   const {register, handleSubmit} = useForm()
   const stringUser = getCookie('user');
   const user = JSON.parse(stringUser ? stringUser : '{}');
@@ -38,6 +39,7 @@ const EditUser = () => {
     .then((ddbb) => {
       console.log(ddbb.data);
     })
+    navigate('/profile')
     
   }
 

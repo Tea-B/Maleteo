@@ -11,7 +11,7 @@ const LoginRegisterpage = () => {
     return(<>
             <Header navigateTo={'/secondstart'}></Header>
     
-        <div className="b-main__starts flex-column">
+        <div className="b-main__starts flex-column gap-2">
         <div className="btndiv2 gap-4">
                     <button id="login-btn" className="btn-login" onClick={() => setShowLogin(true)}>Iniciar sesión</button>
                     <button className="btn-login" onClick={() => setShowLogin(false)}>Regístrate</button>
